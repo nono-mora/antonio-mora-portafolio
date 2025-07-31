@@ -23,7 +23,7 @@ export default function Home() {
         <Contact />
       </main>
       <Footer />
-      <FloatingButtons />
+      {/* <FloatingButtons /> */}
       <ScrollToTop />
     </div>
   );

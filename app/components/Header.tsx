@@ -46,7 +46,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <div className="w-10 h-10 bg-gradient-accent rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">AM</span>
+              
             </div>
             <span className="text-white font-semibold text-xl hidden sm:block">
               Antonio Mora
