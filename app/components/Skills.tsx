@@ -25,7 +25,7 @@ const Skills = () => {
   }, []);
 
   const skillCategories = [
-    // {
+     {
     //   title: 'Frontend',
     //   icon: '🎨',
     //   skills: [
@@ -67,7 +67,7 @@ const Skills = () => {
     //     { name: 'Linux', level: 70, experience: '1+ años' },
     //     { name: 'Agile/Scrum', level: 75, experience: '1+ años' }
     //   ]
-    // }
+     }
   ];
 
   const softSkills = [
@@ -138,61 +138,63 @@ const Skills = () => {
             </p>
           </div>
 
-          {/* Technical Skills */}
-          <div className="space-y-12 mb-20">
+            {/* Technical Skills */}
+            {/* 
+            <div className="space-y-12 mb-20">
             <h3 className="text-2xl font-bold text-white text-center mb-12">
               Habilidades Técnicas
             </h3>
             
             <div className="grid lg:grid-cols-2 gap-8">
               {skillCategories.map((category, categoryIndex) => (
-                <div 
-                  key={category.title}
-                  className={`bg-[#2a2a2a] rounded-xl p-8 border border-[#cfcfcf]/10 hover:border-[#00bfff]/30 transition-all duration-300 hover-lift animate-fade-in-up`}
-                  style={{ animationDelay: `${categoryIndex * 0.2}s` }}
-                >
-                  <div className="flex items-center space-x-3 mb-6">
-                    <span className="text-3xl">{category.icon}</span>
-                    <h4 className="text-xl font-bold text-white">{category.title}</h4>
+              <div 
+                key={category.title}
+                className={`bg-[#2a2a2a] rounded-xl p-8 border border-[#cfcfcf]/10 hover:border-[#00bfff]/30 transition-all duration-300 hover-lift animate-fade-in-up`}
+                style={{ animationDelay: `${categoryIndex * 0.2}s` }}
+              >
+                <div className="flex items-center space-x-3 mb-6">
+                <span className="text-3xl">{category.icon}</span>
+                <h4 className="text-xl font-bold text-white">{category.title}</h4>
+                </div>
+                
+                <div className="space-y-4">
+                {category.skills.map((skill, skillIndex) => (
+                  <div 
+                  key={skill.name}
+                  className="group"
+                  onMouseEnter={() => setHoveredSkill(skill.name)}
+                  onMouseLeave={() => setHoveredSkill(null)}
+                  >
+                  <div className="flex justify-between items-center mb-2">
+                    <span className="text-white font-medium">{skill.name}</span>
+                    <span className="text-[#cfcfcf] text-sm">{skill.experience}</span>
                   </div>
                   
-                  <div className="space-y-4">
-                    {category.skills.map((skill, skillIndex) => (
-                      <div 
-                        key={skill.name}
-                        className="group"
-                        onMouseEnter={() => setHoveredSkill(skill.name)}
-                        onMouseLeave={() => setHoveredSkill(null)}
-                      >
-                        <div className="flex justify-between items-center mb-2">
-                          <span className="text-white font-medium">{skill.name}</span>
-                          <span className="text-[#cfcfcf] text-sm">{skill.experience}</span>
-                        </div>
-                        
-                        <div className="w-full bg-[#1e1e1e] rounded-full h-2 overflow-hidden">
-                          <div 
-                            className={`h-full bg-gradient-to-r from-[#00bfff] to-[#33ccff] rounded-full transition-all duration-1000 ease-out ${
-                              hoveredSkill === skill.name ? 'animate-pulse' : ''
-                            }`}
-                            style={{ 
-                              width: isVisible ? `${skill.level}%` : '0%',
-                              transitionDelay: `${(categoryIndex * 0.2) + (skillIndex * 0.1)}s`
-                            }}
-                          ></div>
-                        </div>
-                        
-                        <div className="flex justify-end">
-                          <span className="text-[#00bfff] text-sm font-medium">
-                            {skill.level}%
-                          </span>
-                        </div>
-                      </div>
-                    ))}
+                  <div className="w-full bg-[#1e1e1e] rounded-full h-2 overflow-hidden">
+                    <div 
+                    className={`h-full bg-gradient-to-r from-[#00bfff] to-[#33ccff] rounded-full transition-all duration-1000 ease-out ${
+                      hoveredSkill === skill.name ? 'animate-pulse' : ''
+                    }`}
+                    style={{ 
+                      width: isVisible ? `${skill.level}%` : '0%',
+                      transitionDelay: `${(categoryIndex * 0.2) + (skillIndex * 0.1)}s`
+                    }}
+                    ></div>
                   </div>
+                  
+                  <div className="flex justify-end">
+                    <span className="text-[#00bfff] text-sm font-medium">
+                    {skill.level}%
+                    </span>
+                  </div>
+                  </div>
+                ))}
                 </div>
+              </div>
               ))}
             </div>
-          </div>
+            </div>
+            */}
 
           {/* Soft Skills */}
           <div className="space-y-12">
