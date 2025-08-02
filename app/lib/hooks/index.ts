@@ -216,13 +216,13 @@ export function useDebounce<T>(value: T, delay: number) {
   return debouncedValue;
 }
 
-// Utility functions
+// // Utility functions
 function throttle<T extends (...args: any[]) => any>(
   func: T,
   limit: number
 ): T {
   let inThrottle: boolean;
-  return ((...args: any[]) => {
+  return (function (this: any, ...args: any[]) {
     if (!inThrottle) {
       func.apply(this, args);
       inThrottle = true;
