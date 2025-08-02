@@ -7,24 +7,28 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import FloatingButtons from './components/FloatingButtons';
 import ScrollToTop from './components/ScrollToTop';
+import { LanguageProvider } from './components/LanguageContext';
+import ClientOnlyWrapper from './components/ClientOnlyWrapper';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#1e1e1e] text-white">
-      <Header />
-      <main>
-        <Hero />
-        <About />
-        <Experience />
-        <Skills />
-        <Projects />
-        <Contact />
-      </main>
-      <Footer />
-      {/* <FloatingButtons /> */}
-      <ScrollToTop />
-    </div>
+    <LanguageProvider>
+      <ClientOnlyWrapper>
+        <div className="min-h-screen bg-[#1e1e1e] text-white">
+          <Header />
+          <main>
+            <Hero />
+            <About />
+            <Experience />
+            <Skills />
+            <Projects />
+            <Contact />
+          </main>
+          <Footer />
+          <ScrollToTop />
+        </div>
+      </ClientOnlyWrapper>
+    </LanguageProvider>
   );
 }

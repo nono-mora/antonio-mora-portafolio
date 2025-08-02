@@ -11,6 +11,12 @@ const nextConfig: NextConfig = {
   // Compresión
   compress: true,
 
+  // Experimental features para mejor performance
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['lucide-react'],
+  },
+
   // Headers de seguridad y performance
   async headers() {
     return [
@@ -45,28 +51,20 @@ const nextConfig: NextConfig = {
           },
         ],
       },
+      // Headers para fuentes
+      {
+        source: '/_next/static/css/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
     ];
   },
 
-  // Redirects (si es necesario)
-  async redirects() {
-    return [
-      // Ejemplo: redirect de rutas antiguas
-      // {
-      //   source: '/old-path',
-      //   destination: '/',
-      //   permanent: true,
-      // },
-    ];
-  },
-
-  // Experimental features
-  experimental: {
-    optimizeCss: true,
-    optimizePackageImports: ['lucide-react'],
-  },
-
-  // Webpack configuration (si es necesario)
+  // Webpack configuration para optimizar fuentes
   webpack: (config, { dev, isServer }) => {
     // Optimizaciones adicionales
     if (!dev && !isServer) {
@@ -80,6 +78,19 @@ const nextConfig: NextConfig = {
       };
     }
 
+    // Optimización para fuentes
+    config.module.rules.push({
+      test: /\.(woff|woff2|eot|ttf|otf)$/,
+      use: {
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          publicPath: '/_next/static/fonts/',
+          outputPath: 'static/fonts/',
+        },
+      },
+    });
+
     return config;
   },
 
@@ -91,7 +102,6 @@ const nextConfig: NextConfig = {
 
   // TypeScript configuration
   typescript: {
-    // Durante el build en producción, type checking es estricto
     ignoreBuildErrors: false,
   },
 
