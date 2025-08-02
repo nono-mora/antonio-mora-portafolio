@@ -250,7 +250,7 @@ export function Heading({
   className, 
   children 
 }: HeadingProps) {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
+  const Tag = `h${level}` as const;
   
   const sizeClasses = {
     sm: 'text-lg',
@@ -284,7 +284,7 @@ export function Heading({
     className
   );
 
-  return <Tag className={classes}>{children}</Tag>;
+  return React.createElement(Tag, { className: classes }, children);
 }
 
 // Text Component

@@ -12,13 +12,13 @@ import {
   X, 
   Calendar,
   ChevronRight,
-  Filter,
+  
   Globe,
   Code,
   Palette,
   Bot
 } from 'lucide-react';
-import type { Project } from '@/lib/types';
+import type { Project } from '../../lib/types';
 
 // Category Icons
 const categoryIcons = {
@@ -77,7 +77,7 @@ function ProjectCard({ project, index, onOpenModal }: ProjectCardProps) {
       <Card 
         hover 
         className="h-full overflow-hidden cursor-pointer group"
-        onClick={() => onOpenModal(project)}
+        // onClick={() => onOpenModal(project)}
       >
         {/* Project Image/Icon */}
         <div className="relative h-48 bg-gradient-to-br from-accent-500/20 to-secondary-500/10 overflow-hidden">

@@ -304,13 +304,7 @@ const nextConfig = {
   },
 };
 
-// Development-only configurations
-if (process.env.NODE_ENV === 'development') {
-  nextConfig.experimental = {
-    ...nextConfig.experimental,
-    forceSwcTransforms: true,
-  };
-}
+
 
 // Production-only configurations
 if (process.env.NODE_ENV === 'production') {
