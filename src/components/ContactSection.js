@@ -9,24 +9,29 @@ gsap.registerPlugin(useGSAP);
 const ContactSection = () => {
   const [currentLang, setCurrentLang] = useState("en");
   const [formData, setFormData] = useState({
-    name: "",
+    fullName: "",
     email: "",
     subject: "",
     message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState(null);
-  const containerRef = useRef();
+  const sectionRef = useRef();
 
   useGSAP(
     () => {
       gsap.fromTo(
-        [".contact-header", ".contact-info", ".contact-form"],
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, stagger: 0.2 }
+        ".contact-content",
+        { opacity: 0, y: 20 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          delay: 0.3,
+          ease: "power2.out",
+        }
       );
     },
-    { scope: containerRef }
+    { scope: sectionRef }
   );
 
   useEffect(() => {
@@ -47,9 +52,9 @@ const ContactSection = () => {
     en: {
       title: "Let's Work Together",
       subtitle:
-        "Ready to start your next project? Let's connect and discuss how I can help bring your ideas to life.",
+        "Looking for a dedicated Full Stack Developer? Let's connect and discuss how I can contribute to your team's success.",
       form: {
-        name: "Full Name",
+        fullName: "Full Name",
         email: "Email Address",
         subject: "Subject",
         message: "Your Message",
@@ -60,31 +65,33 @@ const ContactSection = () => {
         email: "Email",
         phone: "Phone",
         location: "Location",
-        whatsapp: "WhatsApp",
       },
-      success: "Message sent successfully! I'll get back to you soon.",
-      error: "There was an error sending your message. Please try again.",
+      social: {
+        whatsapp: "WhatsApp",
+        linkedin: "LinkedIn",
+      },
     },
     es: {
       title: "Trabajemos Juntos",
       subtitle:
-        "¿Listo para comenzar tu próximo proyecto? Conectemos y conversemos sobre cómo puedo ayudarte a hacer realidad tus ideas.",
+        "¿Buscas un Desarrollador Full Stack comprometido? Conectemos y conversemos sobre cómo puedo contribuir al éxito de tu equipo.",
       form: {
-        name: "Nombre Completo",
-        email: "Correo Electrónico",
+        fullName: "Nombre Completo",
+        email: "Dirección de Email",
         subject: "Asunto",
         message: "Tu Mensaje",
         send: "Enviar Mensaje",
         sending: "Enviando...",
       },
       contact: {
-        email: "Correo",
+        email: "Email",
         phone: "Teléfono",
         location: "Ubicación",
-        whatsapp: "WhatsApp",
       },
-      success: "¡Mensaje enviado con éxito! Te responderé pronto.",
-      error: "Hubo un error al enviar tu mensaje. Por favor intenta de nuevo.",
+      social: {
+        whatsapp: "WhatsApp",
+        linkedin: "LinkedIn",
+      },
     },
   };
 
@@ -100,234 +107,171 @@ const ContactSection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    setSubmitStatus(null);
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        setSubmitStatus("success");
-        setFormData({ name: "", email: "", subject: "", message: "" });
-      } else {
-        setSubmitStatus("error");
-      }
-    } catch (error) {
-      setSubmitStatus("error");
-    } finally {
+    setTimeout(() => {
       setIsSubmitting(false);
-    }
+      setFormData({
+        fullName: "",
+        email: "",
+        subject: "",
+        message: "",
+      });
+    }, 2000);
   };
 
-  const handleWhatsApp = () => {
+  const openWhatsApp = () => {
     const message = encodeURIComponent(
-      "Hola Antonio, me interesa contactarte para un proyecto."
+      `Hello! I'm interested in discussing employment opportunities with your team.`
     );
-    window.open(`https://wa.me/50689761010?text=${message}`, "_blank");
+    window.open(`https://wa.me/50684017010?text=${message}`, "_blank");
+  };
+
+  const openLinkedIn = () => {
+    window.open("https://linkedin.com/in/antonio-mora", "_blank");
   };
 
   return (
-    <>
-      <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet"
-      />
+    <section
+      ref={sectionRef}
+      id="contact"
+      className="min-h-screen bg-primary-white"
+    >
+      <div className="contact-content max-w-4xl mx-auto px-6 py-32">
+        {/* Header */}
+        <div className="text-center mb-20">
+          <h1 className="text-5xl lg:text-6xl font-poppins font-light text-primary-dark mb-6 tracking-tight">
+            {currentContent.title}
+          </h1>
+          <p className="text-xl font-roboto font-light text-primary-dark max-w-2xl mx-auto leading-relaxed">
+            {currentContent.subtitle}
+          </p>
+        </div>
 
-      <section
-        ref={containerRef}
-        id="contact"
-        className="min-h-screen bg-primary-white py-20"
-      >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Header */}
-          <div className="contact-header text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-poppins font-bold text-primary-dark mb-4">
-              {currentContent.title}
-            </h2>
-            <p className="text-lg text-primary-gray font-roboto max-w-2xl mx-auto">
-              {currentContent.subtitle}
-            </p>
-          </div>
-
-          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
-            {/* Contact Info */}
-            <div className="lg:col-span-2">
-              <div className="contact-info space-y-8">
-                <h3 className="text-2xl font-poppins font-semibold text-primary-dark mb-6">
-                  Contact Information
-                </h3>
-
-                {/* Email */}
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-primary-blue/10 rounded-lg flex items-center justify-center">
-                    <span className="material-icons text-primary-blue">
-                      email
-                    </span>
-                  </div>
-                  <div>
-                    <p className="font-poppins font-medium text-primary-dark">
-                      {currentContent.contact.email}
-                    </p>
-                    <p className="text-primary-gray font-roboto">
-                      antonio.mora@example.com
-                    </p>
-                  </div>
+        {/* Contact Form */}
+        <div className="max-w-2xl mx-auto">
+          <div className="border border-primary-gray/10 px-12 py-16 shadow-lg">
+            <form onSubmit={handleSubmit} className="space-y-8">
+              {/* Full Name & Email Row */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="space-y-2">
+                  <input
+                    type="text"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleInputChange}
+                    placeholder={currentContent.form.fullName}
+                    className="w-full px-0 py-4 border-0 border-b border-primary-gray/30 font-roboto text-lg text-primary-dark placeholder:text-primary-dark/60 bg-transparent focus:outline-none focus:border-primary-blue transition-colors duration-300"
+                    required
+                  />
                 </div>
-
-                {/* Phone */}
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-primary-blue/10 rounded-lg flex items-center justify-center">
-                    <span className="material-icons text-primary-blue">
-                      phone
-                    </span>
-                  </div>
-                  <div>
-                    <p className="font-poppins font-medium text-primary-dark">
-                      {currentContent.contact.phone}
-                    </p>
-                    <p className="text-primary-gray font-roboto">
-                      +506 8976-1010
-                    </p>
-                  </div>
-                </div>
-
-                {/* Location */}
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-primary-blue/10 rounded-lg flex items-center justify-center">
-                    <span className="material-icons text-primary-blue">
-                      location_on
-                    </span>
-                  </div>
-                  <div>
-                    <p className="font-poppins font-medium text-primary-dark">
-                      {currentContent.contact.location}
-                    </p>
-                    <p className="text-primary-gray font-roboto">Costa Rica</p>
-                  </div>
-                </div>
-
-                {/* WhatsApp Button */}
-                <div className="pt-6">
-                  <button
-                    onClick={handleWhatsApp}
-                    className="flex items-center gap-3 bg-green-500 text-white px-6 py-3 rounded-lg font-poppins font-medium hover:bg-green-600 transition-all duration-300 hover:scale-105"
-                  >
-                    <span className="material-icons">chat</span>
-                    {currentContent.contact.whatsapp}
-                  </button>
+                <div className="space-y-2">
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder={currentContent.form.email}
+                    className="w-full px-0 py-4 border-0 border-b border-primary-gray/30 font-roboto text-lg text-primary-dark placeholder:text-primary-dark/60 bg-transparent focus:outline-none focus:border-primary-blue transition-colors duration-300"
+                    required
+                  />
                 </div>
               </div>
-            </div>
 
-            {/* Contact Form */}
-            <div className="lg:col-span-3">
-              <div className="contact-form">
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <label className="block text-primary-dark font-poppins font-medium mb-2">
-                        {currentContent.form.name}
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-3 border border-primary-gray rounded-lg focus:border-primary-blue focus:outline-none transition-colors duration-300 font-roboto"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-primary-dark font-poppins font-medium mb-2">
-                        {currentContent.form.email}
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="w-full px-4 py-3 border border-primary-gray rounded-lg focus:border-primary-blue focus:outline-none transition-colors duration-300 font-roboto"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-primary-dark font-poppins font-medium mb-2">
-                      {currentContent.form.subject}
-                    </label>
-                    <input
-                      type="text"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      required
-                      className="w-full px-4 py-3 border border-primary-gray rounded-lg focus:border-primary-blue focus:outline-none transition-colors duration-300 font-roboto"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-primary-dark font-poppins font-medium mb-2">
-                      {currentContent.form.message}
-                    </label>
-                    <textarea
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      rows={6}
-                      className="w-full px-4 py-3 border border-primary-gray rounded-lg focus:border-primary-blue focus:outline-none transition-colors duration-300 font-roboto resize-vertical"
-                    ></textarea>
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={`w-full flex items-center justify-center gap-2 px-6 py-4 rounded-lg font-poppins font-medium transition-all duration-300 ${
-                      isSubmitting
-                        ? "bg-primary-gray text-white cursor-not-allowed"
-                        : "bg-primary-blue text-white hover:bg-blue-500 hover:scale-105"
-                    }`}
-                  >
-                    <span className="material-icons">send</span>
-                    {isSubmitting
-                      ? currentContent.form.sending
-                      : currentContent.form.send}
-                  </button>
-                </form>
-
-                {/* Status Messages */}
-                {submitStatus && (
-                  <div
-                    className={`mt-4 p-4 rounded-lg ${
-                      submitStatus === "success"
-                        ? "bg-green-100 text-green-700 border border-green-200"
-                        : "bg-red-100 text-red-700 border border-red-200"
-                    }`}
-                  >
-                    <div className="flex items-center gap-2">
-                      <span className="material-icons text-sm">
-                        {submitStatus === "success" ? "check_circle" : "error"}
-                      </span>
-                      <p className="font-roboto">
-                        {submitStatus === "success"
-                          ? currentContent.success
-                          : currentContent.error}
-                      </p>
-                    </div>
-                  </div>
-                )}
+              {/* Subject */}
+              <div className="space-y-2">
+                <input
+                  type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  placeholder={currentContent.form.subject}
+                  className="w-full px-0 py-4 border-0 border-b border-primary-gray/30 font-roboto text-lg text-primary-dark placeholder:text-primary-dark/60 bg-transparent focus:outline-none focus:border-primary-blue transition-colors duration-300"
+                  required
+                />
               </div>
-            </div>
+
+              {/* Message */}
+              <div className="space-y-2">
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  placeholder={currentContent.form.message}
+                  rows={4}
+                  className="w-full px-0 py-4 border-0 border-b border-primary-gray/30 font-roboto text-lg text-primary-dark placeholder:text-primary-dark/60 bg-transparent focus:outline-none focus:border-primary-blue transition-colors duration-300 resize-none"
+                  required
+                />
+              </div>
+
+              {/* Submit Button */}
+              <div className="pt-8">
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="w-full bg-primary-blue text-primary-white py-4 px-8 font-roboto text-lg font-medium transition-all duration-300 hover:bg-primary-blue/90 disabled:opacity-50 disabled:cursor-not-allowed"
+                  style={{ borderRadius: "0" }}
+                >
+                  {isSubmitting
+                    ? currentContent.form.sending
+                    : currentContent.form.send}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
-      </section>
-    </>
+
+        {/* Contact Info & Social */}
+        <div className="mt-24 pt-16 border-t border-primary-gray/20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+            {/* Email */}
+            <div>
+              <h3 className="font-poppins text-sm font-medium text-primary-dark mb-2 uppercase tracking-wide">
+                {currentContent.contact.email}
+              </h3>
+              <p className="font-roboto text-lg text-primary-dark">
+                antonio.mora@example.com
+              </p>
+            </div>
+
+            {/* Phone */}
+            <div>
+              <h3 className="font-poppins text-sm font-medium text-primary-dark mb-2 uppercase tracking-wide">
+                {currentContent.contact.phone}
+              </h3>
+              <p className="font-roboto text-lg text-primary-dark">
+                +506 8401-7010
+              </p>
+            </div>
+
+            {/* Location */}
+            <div>
+              <h3 className="font-poppins text-sm font-medium text-primary-dark mb-2 uppercase tracking-wide">
+                {currentContent.contact.location}
+              </h3>
+              <p className="font-roboto text-lg text-primary-dark">
+                Costa Rica
+              </p>
+            </div>
+          </div>
+
+          {/* Social Links */}
+          <div className="mt-16 flex justify-center gap-8">
+            <button
+              onClick={openWhatsApp}
+              className="font-roboto text-primary-blue hover:text-primary-dark transition-colors duration-300 text-lg"
+            >
+              {currentContent.social.whatsapp}
+            </button>
+            <button
+              onClick={openLinkedIn}
+              className="font-roboto text-primary-blue hover:text-primary-dark transition-colors duration-300 text-lg"
+            >
+              {currentContent.social.linkedin}
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 };
 
