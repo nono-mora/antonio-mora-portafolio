@@ -21,7 +21,7 @@ const roboto = Roboto({
 export const metadata = {
   title: "Antonio Mora - Full Stack Developer",
   description:
-    "Experienced Full Stack Developer specializing in modern web technologies. Building scalable applications with React, Node.js, and cloud technologies.",
+    "Experienced developer building scalable web applications and robust backend systems. Seeking opportunities to contribute to innovative teams with modern technologies.",
   keywords:
     "Full Stack Developer, React, Node.js, JavaScript, TypeScript, Web Development, Software Engineer, Antonio Mora",
   author: "Antonio Mora",

@@ -1,6 +1,7 @@
 import HeroSection from "../components/HeroSection";
 import ContactSection from "../components/ContactSection";
 import ScrollToTop from "../components/ScrollToTop";
+import ProjectsSection from "@/components/ProjectsSection";
 
 export default function Home() {
   return (
@@ -23,19 +24,7 @@ export default function Home() {
       </section>
 
       {/* Projects Section */}
-      <section
-        id="projects"
-        className="min-h-screen flex items-center justify-center bg-primary-dark"
-      >
-        <div className="text-center">
-          <h2 className="text-4xl font-poppins font-bold text-primary-white mb-4">
-            Projects Section
-          </h2>
-          <p className="text-lg text-primary-gray font-roboto">
-            Esta sección se desarrollará en futuras iteraciones
-          </p>
-        </div>
-      </section>
+      <ProjectsSection />
 
       {/* Contact Section */}
       <ContactSection />

@@ -17,7 +17,7 @@ const HeroSection = () => {
       role: "Full Stack Developer",
       description:
         "Experienced developer building scalable web applications and robust backend systems. Seeking opportunities to contribute to innovative teams with modern technologies.",
-      experience: "3+ Years Experience",
+      experience: "1+ Years Experience",
       location: "Remote / On-site",
       status: "Open to Work",
       downloadCV: "Download CV",
@@ -29,7 +29,7 @@ const HeroSection = () => {
       role: "Desarrollador Full Stack",
       description:
         "Desarrollador experimentado construyendo aplicaciones web escalables y sistemas backend robustos. Buscando oportunidades para contribuir a equipos innovadores con tecnologías modernas.",
-      experience: "3+ Años de Experiencia",
+      experience: "1+ Años de Experiencia",
       location: "Remoto / Presencial",
       status: "Disponible para Trabajar",
       downloadCV: "Descargar CV",
