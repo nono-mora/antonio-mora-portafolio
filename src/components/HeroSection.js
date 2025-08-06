@@ -107,7 +107,7 @@ const HeroSection = () => {
       experience: "3+ Years Experience",
       location: "Remote / On-site",
       status: "Open to Work",
-      viewWork: "View Portfolio",
+      downloadCV: "Download CV",
       contact: "Contact Me",
       scroll: "Explore More",
     },
@@ -119,7 +119,7 @@ const HeroSection = () => {
       experience: "3+ Años de Experiencia",
       location: "Remoto / Presencial",
       status: "Disponible para Trabajar",
-      viewWork: "Ver Portafolio",
+      downloadCV: "Descargar CV",
       contact: "Contactarme",
       scroll: "Explorar Más",
     },
@@ -131,6 +131,23 @@ const HeroSection = () => {
     const nextSection = document.getElementById("about");
     if (nextSection) {
       nextSection.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const handleDownloadCV = () => {
+    // Crear un enlace temporal para descargar el CV
+    const link = document.createElement("a");
+    link.href = "/cv.pdf";
+    link.download = "Antonio_Mora_CV.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  const handleContact = () => {
+    const contactSection = document.getElementById("contact");
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" });
     }
   };
 
@@ -202,11 +219,17 @@ const HeroSection = () => {
 
             {/* Buttons - Mobile */}
             <div className="hero-buttons flex flex-col gap-3 px-4">
-              <button className="flex items-center justify-center gap-2 bg-primary-blue text-primary-white px-6 py-4 rounded-lg font-poppins font-medium hover:bg-blue-500 transition-all duration-300">
-                <span className="material-icons text-lg">folder_open</span>
-                {currentContent.viewWork}
+              <button
+                onClick={handleDownloadCV}
+                className="flex items-center justify-center gap-2 bg-primary-blue text-primary-white px-6 py-4 rounded-lg font-poppins font-medium hover:bg-blue-500 transition-all duration-300"
+              >
+                <span className="material-icons text-lg">download</span>
+                {currentContent.downloadCV}
               </button>
-              <button className="flex items-center justify-center gap-2 border-2 border-primary-gray text-primary-gray px-6 py-4 rounded-lg font-poppins font-medium hover:border-primary-white hover:text-primary-white transition-all duration-300">
+              <button
+                onClick={handleContact}
+                className="flex items-center justify-center gap-2 border-2 border-primary-gray text-primary-gray px-6 py-4 rounded-lg font-poppins font-medium hover:border-primary-white hover:text-primary-white transition-all duration-300"
+              >
                 <span className="material-icons text-lg">email</span>
                 {currentContent.contact}
               </button>
@@ -281,11 +304,17 @@ const HeroSection = () => {
 
               {/* Buttons */}
               <div className="hero-buttons flex gap-4 pt-4">
-                <button className="flex items-center justify-center gap-2 bg-primary-blue text-primary-white px-6 py-3 rounded-lg font-poppins font-medium hover:bg-blue-500 transition-all duration-300 hover:scale-105">
-                  <span className="material-icons text-lg">folder_open</span>
-                  {currentContent.viewWork}
+                <button
+                  onClick={handleDownloadCV}
+                  className="flex items-center justify-center gap-2 bg-primary-blue text-primary-white px-6 py-3 rounded-lg font-poppins font-medium hover:bg-blue-500 transition-all duration-300 hover:scale-105"
+                >
+                  <span className="material-icons text-lg">download</span>
+                  {currentContent.downloadCV}
                 </button>
-                <button className="flex items-center justify-center gap-2 border-2 border-primary-gray text-primary-gray px-6 py-3 rounded-lg font-poppins font-medium hover:border-primary-white hover:text-primary-white transition-all duration-300 hover:scale-105">
+                <button
+                  onClick={handleContact}
+                  className="flex items-center justify-center gap-2 border-2 border-primary-gray text-primary-gray px-6 py-3 rounded-lg font-poppins font-medium hover:border-primary-white hover:text-primary-white transition-all duration-300 hover:scale-105"
+                >
                   <span className="material-icons text-lg">email</span>
                   {currentContent.contact}
                 </button>
