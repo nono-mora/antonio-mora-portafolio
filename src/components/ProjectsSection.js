@@ -45,8 +45,7 @@ const ProjectsSection = () => {
           fullDescription:
             "A comprehensive e-commerce solution featuring real-time inventory management, secure payment processing, and an intuitive admin dashboard. Built with performance and scalability in mind.",
           category: "fullstack",
-          image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=E-Commerce+Platform",
+          image: "SS-Portfolio.png",
           technologies: ["React", "Node.js", "MongoDB", "Stripe API", "Redis"],
           challenge:
             "Create a scalable platform handling thousands of concurrent users with real-time inventory updates.",
@@ -449,7 +448,7 @@ const ProjectsSection = () => {
               <div
                 key={project.id}
                 ref={(el) => (projectsRef.current[index] = el)}
-                className="project-card group relative bg-white backdrop-blur-sm rounded-2xl overflow-hidden border border-primary-gray/10 hover:border-primary-blue/30 hover:shadow-2xl hover:shadow-primary-blue/10 transition-all duration-500 cursor-pointer"
+                className="project-card group relative bg-white backdrop-blur-sm rounded-2xl overflow-hidden border border-primary-dark/50 hover:shadow-2xl hover:shadow-primary-blue/10 transition-all duration-500 cursor-pointer"
                 onClick={() => openProjectModal(project)}
                 onMouseEnter={() => setHoveredProject(project.id)}
                 onMouseLeave={() => setHoveredProject(null)}
