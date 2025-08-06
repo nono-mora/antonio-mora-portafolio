@@ -3,7 +3,6 @@
 import { useEffect, useState, useRef } from "react";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
-import LanguageSwitcher from "./LanguageSwitcher";
 
 gsap.registerPlugin(useGSAP);
 
@@ -146,11 +145,6 @@ const HeroSection = () => {
         ref={containerRef}
         className="relative min-h-screen bg-primary-dark flex items-center"
       >
-        {/* Language Switcher */}
-        <div className="absolute top-6 right-6 z-20">
-          <LanguageSwitcher />
-        </div>
-
         <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile Layout */}
           <div className="lg:hidden space-y-8">

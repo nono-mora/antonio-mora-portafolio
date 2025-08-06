@@ -5,7 +5,7 @@ export default function Home() {
     <main className="relative">
       <HeroSection />
 
-      {/* Placeholder para las siguientes secciones */}
+      {/* About Section */}
       <section
         id="about"
         className="min-h-screen flex items-center justify-center bg-primary-white"
@@ -20,10 +20,29 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="min-h-screen flex items-center justify-center bg-primary-dark">
+      {/* Projects Section */}
+      <section
+        id="projects"
+        className="min-h-screen flex items-center justify-center bg-primary-dark"
+      >
         <div className="text-center">
           <h2 className="text-4xl font-poppins font-bold text-primary-white mb-4">
             Projects Section
+          </h2>
+          <p className="text-lg text-primary-gray font-roboto">
+            Esta sección se desarrollará en futuras iteraciones
+          </p>
+        </div>
+      </section>
+
+      {/* Contact Section */}
+      <section
+        id="contact"
+        className="min-h-screen flex items-center justify-center bg-primary-white"
+      >
+        <div className="text-center">
+          <h2 className="text-4xl font-poppins font-bold text-primary-dark mb-4">
+            Contact Section
           </h2>
           <p className="text-lg text-primary-gray font-roboto">
             Esta sección se desarrollará en futuras iteraciones

@@ -1,5 +1,6 @@
 import { Poppins, Roboto } from "next/font/google";
 import "./globals.css";
+import Header from "../components/Header";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -68,7 +69,8 @@ export default function RootLayout({ children }) {
       <body
         className={`${roboto.className} bg-primary-dark text-primary-white antialiased`}
       >
-        {children}
+        <Header />
+        <main className="pt-16">{children}</main>
       </body>
     </html>
   );
