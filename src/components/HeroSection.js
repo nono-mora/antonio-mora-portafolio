@@ -8,95 +8,8 @@ gsap.registerPlugin(useGSAP);
 
 const HeroSection = () => {
   const containerRef = useRef();
+  const canvasRef = useRef();
   const [currentLang, setCurrentLang] = useState("en");
-
-  useGSAP(
-    () => {
-      const tl = gsap.timeline();
-
-      gsap.set(
-        [
-          ".status-badge",
-          ".hero-name",
-          ".hero-role",
-          ".hero-buttons",
-          ".hero-info",
-          ".info-card",
-        ],
-        {
-          opacity: 0,
-          y: 30,
-        }
-      );
-
-      tl.to(".status-badge", {
-        opacity: 1,
-        y: 0,
-        duration: 0.6,
-        delay: 0.3,
-      })
-        .to(
-          ".hero-name",
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-          },
-          "-=0.3"
-        )
-        .to(
-          ".hero-role",
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-          },
-          "-=0.4"
-        )
-        .to(
-          ".hero-buttons",
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-          },
-          "-=0.3"
-        )
-        .to(
-          ".hero-info",
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.6,
-          },
-          "-=0.3"
-        )
-        .to(
-          ".info-card",
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-          },
-          "-=0.5"
-        );
-    },
-    { scope: containerRef }
-  );
-
-  useEffect(() => {
-    const savedLang = localStorage.getItem("language") || "en";
-    setCurrentLang(savedLang);
-
-    const handleStorageChange = (e) => {
-      if (e.key === "language") {
-        setCurrentLang(e.newValue || "en");
-      }
-    };
-
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
-  }, []);
 
   const content = {
     en: {
@@ -127,15 +40,131 @@ const HeroSection = () => {
 
   const currentContent = content[currentLang];
 
-  const handleScroll = () => {
-    const nextSection = document.getElementById("about");
-    if (nextSection) {
-      nextSection.scrollIntoView({ behavior: "smooth" });
+  // Animación de partículas en el fondo
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const particles = [];
+    const particleCount = 100;
+    const connectionDistance = 150;
+    const mouse = { x: null, y: null, radius: 100 };
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = Math.random() * 2 - 1;
+        this.speedY = Math.random() * 2 - 1;
+        this.opacity = Math.random() * 0.5 + 0.2;
+      }
+
+      update() {
+        this.x += this.speedX * 0.3;
+        this.y += this.speedY * 0.3;
+
+        if (mouse.x != null && mouse.y != null) {
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < mouse.radius) {
+            const force = (mouse.radius - distance) / mouse.radius;
+            const directionX = dx / distance;
+            const directionY = dy / distance;
+            this.x -= directionX * force * 3;
+            this.y -= directionY * force * 3;
+          }
+        }
+
+        if (this.x > canvas.width) this.x = 0;
+        if (this.x < 0) this.x = canvas.width;
+        if (this.y > canvas.height) this.y = 0;
+        if (this.y < 0) this.y = canvas.height;
+      }
+
+      draw() {
+        ctx.fillStyle = `rgba(0, 191, 255, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
     }
-  };
+
+    for (let i = 0; i < particleCount; i++) {
+      particles.push(new Particle());
+    }
+
+    const connectParticles = () => {
+      for (let a = 0; a < particles.length; a++) {
+        for (let b = a + 1; b < particles.length; b++) {
+          const dx = particles[a].x - particles[b].x;
+          const dy = particles[a].y - particles[b].y;
+          const distance = Math.sqrt(dx * dx + dy * dy);
+          if (distance < connectionDistance) {
+            const opacity = (1 - distance / connectionDistance) * 0.3;
+            ctx.strokeStyle = `rgba(0, 191, 255, ${opacity})`;
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(particles[b].x, particles[b].y);
+            ctx.stroke();
+          }
+        }
+      }
+    };
+
+    const animate = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p) => {
+        p.update();
+        p.draw();
+      });
+      connectParticles();
+      requestAnimationFrame(animate);
+    };
+
+    const handleMouseMove = (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    };
+
+    const handleMouseLeave = () => {
+      mouse.x = null;
+      mouse.y = null;
+    };
+
+    const handleResize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("resize", handleResize);
+    animate();
+
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    const savedLang = localStorage.getItem("language") || "en";
+    setCurrentLang(savedLang);
+    const handleStorageChange = (e) => {
+      if (e.key === "language") setCurrentLang(e.newValue || "en");
+    };
+    window.addEventListener("storage", handleStorageChange);
+    return () => window.removeEventListener("storage", handleStorageChange);
+  }, []);
 
   const handleDownloadCV = () => {
-    // Crear un enlace temporal para descargar el CV
     const link = document.createElement("a");
     link.href = "/cv.pdf";
     link.download = "Antonio_Mora_CV.pdf";
@@ -145,256 +174,84 @@ const HeroSection = () => {
   };
 
   const handleContact = () => {
-    const contactSection = document.getElementById("contact");
-    if (contactSection) {
-      contactSection.scrollIntoView({ behavior: "smooth" });
-    }
+    const section = document.getElementById("contact");
+    if (section) section.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
     <>
-      <link
-        href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        rel="stylesheet"
-      />
-
       <section
         ref={containerRef}
-        className="relative min-h-screen bg-primary-dark flex items-center"
+        className="relative min-h-screen bg-primary-dark flex items-center justify-center overflow-hidden"
       >
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Mobile Layout */}
-          <div className="lg:hidden space-y-8">
-            {/* Status Badge */}
-            <div className="status-badge text-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-blue/10 border border-primary-blue/30 rounded-full">
-                <span className="material-icons text-primary-blue text-sm">
-                  work
-                </span>
-                <span className="text-primary-blue font-roboto text-sm font-medium">
-                  {currentContent.status}
-                </span>
-              </div>
-            </div>
+        {/* Partículas: solo visibles en sm+ */}
+        <canvas
+          ref={canvasRef}
+          className="hidden sm:block absolute inset-0 pointer-events-none"
+          style={{ mixBlendMode: "screen", zIndex: 0 }}
+        />
 
-            {/* Name - Mobile */}
-            <div className="hero-name text-center space-y-1">
-              <h1 className="text-6xl sm:text-7xl font-poppins font-bold text-primary-white leading-none">
-                Antonio
-              </h1>
-              <h1 className="text-6xl sm:text-7xl font-poppins font-bold text-primary-blue leading-none">
-                Mora
-              </h1>
-            </div>
-
-            {/* Role - Mobile */}
-            <div className="hero-role text-center">
-              <h2 className="text-2xl sm:text-3xl font-poppins font-medium text-primary-gray">
-                {currentContent.role}
-              </h2>
-            </div>
-
-            {/* Description - Mobile Compact */}
-            <div className="px-4">
-              <p className="text-primary-gray font-roboto leading-relaxed text-center">
-                {currentContent.description}
-              </p>
-            </div>
-
-            {/* Skills - Mobile */}
-            <div className="flex flex-wrap justify-center gap-2 px-4">
-              <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
-                React
-              </span>
-              <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
-                Node.js
-              </span>
-              <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
-                TypeScript
-              </span>
-              <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
-                MongoDB
-              </span>
-            </div>
-
-            {/* Buttons - Mobile */}
-            <div className="hero-buttons flex flex-col gap-3 px-4">
-              <button
-                onClick={handleDownloadCV}
-                className="flex items-center justify-center gap-2 bg-primary-blue text-primary-white px-6 py-4 rounded-lg font-poppins font-medium hover:bg-blue-500 transition-all duration-300"
-              >
-                <span className="material-icons text-lg">download</span>
-                {currentContent.downloadCV}
-              </button>
-              <button
-                onClick={handleContact}
-                className="flex items-center justify-center gap-2 border-2 border-primary-gray text-primary-gray px-6 py-4 rounded-lg font-poppins font-medium hover:border-primary-white hover:text-primary-white transition-all duration-300"
-              >
-                <span className="material-icons text-lg">email</span>
-                {currentContent.contact}
-              </button>
-            </div>
-
-            {/* Quick Info - Mobile */}
-            <div className="hero-info flex justify-center gap-8">
-              <div className="flex items-center gap-2 text-primary-gray">
-                <span className="material-icons text-primary-blue text-lg">
-                  schedule
-                </span>
-                <span className="font-roboto text-sm">
-                  {currentContent.experience}
-                </span>
-              </div>
-              <div className="flex items-center gap-2 text-primary-gray">
-                <span className="material-icons text-primary-blue text-lg">
-                  location_on
-                </span>
-                <span className="font-roboto text-sm">
-                  {currentContent.location}
-                </span>
-              </div>
-            </div>
-
-            {/* Scroll Indicator - Mobile */}
-            <div className="text-center pt-4">
-              <button
-                onClick={handleScroll}
-                className="flex items-center justify-center gap-2 text-primary-gray hover:text-primary-blue transition-colors duration-300 mx-auto"
-              >
-                <span className="font-roboto text-sm">
-                  {currentContent.scroll}
-                </span>
-                <span className="material-icons">keyboard_arrow_down</span>
-              </button>
-            </div>
-          </div>
-
-          {/* Desktop Layout */}
-          <div className="hidden lg:grid grid-cols-5 gap-16 items-center">
-            {/* Left Content - Desktop */}
-            <div className="col-span-3 space-y-6">
-              {/* Status Badge */}
-              <div className="status-badge">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-blue/10 border border-primary-blue/30 rounded-full">
-                  <span className="material-icons text-primary-blue text-sm">
-                    work
-                  </span>
-                  <span className="text-primary-blue font-roboto text-sm font-medium">
-                    {currentContent.status}
-                  </span>
-                </div>
-              </div>
-
-              {/* Name */}
-              <div className="hero-name space-y-1">
-                <h1 className="text-6xl xl:text-7xl font-poppins font-bold text-primary-white leading-none">
-                  Antonio
-                </h1>
-                <h1 className="text-6xl xl:text-7xl font-poppins font-bold text-primary-blue leading-none">
-                  Mora
-                </h1>
-              </div>
-
-              {/* Role */}
-              <div className="hero-role">
-                <h2 className="text-2xl xl:text-3xl font-poppins font-medium text-primary-gray">
-                  {currentContent.role}
-                </h2>
-              </div>
-
-              {/* Buttons */}
-              <div className="hero-buttons flex gap-4 pt-4">
-                <button
-                  onClick={handleDownloadCV}
-                  className="flex items-center justify-center gap-2 bg-primary-blue text-primary-white px-6 py-3 rounded-lg font-poppins font-medium hover:bg-blue-500 transition-all duration-300 hover:scale-105"
-                >
-                  <span className="material-icons text-lg">download</span>
-                  {currentContent.downloadCV}
-                </button>
-                <button
-                  onClick={handleContact}
-                  className="flex items-center justify-center gap-2 border-2 border-primary-gray text-primary-gray px-6 py-3 rounded-lg font-poppins font-medium hover:border-primary-white hover:text-primary-white transition-all duration-300 hover:scale-105"
-                >
-                  <span className="material-icons text-lg">email</span>
-                  {currentContent.contact}
-                </button>
-              </div>
-
-              {/* Quick Info */}
-              <div className="hero-info flex gap-6 pt-4">
-                <div className="flex items-center gap-2 text-primary-gray">
-                  <span className="material-icons text-primary-blue text-lg">
-                    schedule
-                  </span>
-                  <span className="font-roboto text-sm">
-                    {currentContent.experience}
-                  </span>
-                </div>
-                <div className="flex items-center gap-2 text-primary-gray">
-                  <span className="material-icons text-primary-blue text-lg">
-                    location_on
-                  </span>
-                  <span className="font-roboto text-sm">
-                    {currentContent.location}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right Content - Info Card Desktop */}
-            <div className="col-span-2">
-              <div className="info-card">
-                <div className="bg-primary-white/[0.03] backdrop-blur-sm border border-primary-white/10 rounded-xl p-6">
-                  {/* Header */}
-                  <div className="flex items-center gap-3 mb-5">
-                    <span className="material-icons text-primary-blue">
-                      person
+        {/* Card principal */}
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-primary-dark/80 backdrop-blur-md rounded-2xl p-8 sm:p-12 opacity-90">
+            <div className="grid grid-cols-1 lg:grid-cols-2 items-center gap-12 text-center lg:text-left">
+              {/* IZQUIERDA: TEXTO */}
+              <div className="flex flex-col items-center lg:items-start space-y-6">
+                <div className="status-badge">
+                  <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-blue/10 border border-primary-blue/30 rounded-full">
+                    <span className="material-icons text-primary-blue text-sm">
+                      work
                     </span>
-                    <h3 className="text-primary-blue font-poppins font-semibold">
-                      Professional Profile
-                    </h3>
-                  </div>
-
-                  {/* Description */}
-                  <div className="mb-5">
-                    <p className="text-primary-gray font-roboto leading-relaxed text-sm">
-                      {currentContent.description}
-                    </p>
-                  </div>
-
-                  {/* Skills */}
-                  <div className="mb-5">
-                    <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
-                        React
-                      </span>
-                      <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
-                        Node.js
-                      </span>
-                      <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
-                        TypeScript
-                      </span>
-                      <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
-                        MongoDB
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Scroll Indicator */}
-                  <div className="text-center pt-3 border-t border-primary-white/10">
-                    <button
-                      onClick={handleScroll}
-                      className="flex items-center justify-center gap-2 text-primary-gray hover:text-primary-blue transition-colors duration-300 mx-auto text-sm"
-                    >
-                      <span className="font-roboto">
-                        {currentContent.scroll}
-                      </span>
-                      <span className="material-icons text-lg">
-                        keyboard_arrow_down
-                      </span>
-                    </button>
+                    <span className="text-primary-blue font-roboto text-sm font-medium">
+                      {currentContent.status}
+                    </span>
                   </div>
                 </div>
+
+                <div className="hero-name">
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-poppins font-bold text-primary-white leading-tight">
+                    Antonio
+                  </h1>
+                  <h1 className="text-4xl sm:text-5xl md:text-6xl font-poppins font-bold text-primary-blue leading-tight">
+                    Mora
+                  </h1>
+                </div>
+
+                <div className="hero-role">
+                  <h2 className="text-lg sm:text-xl md:text-2xl font-poppins font-medium text-primary-gray">
+                    {currentContent.role}
+                  </h2>
+                </div>
+
+                <p className="text-primary-gray font-roboto leading-relaxed max-w-md text-base sm:text-lg">
+                  {currentContent.description}
+                </p>
+
+                <div className="hero-buttons flex flex-col sm:flex-row flex-wrap gap-4 pt-2 justify-center lg:justify-start">
+                  <button
+                    onClick={handleDownloadCV}
+                    className="flex items-center justify-center gap-2 bg-primary-blue text-white px-6 py-3 rounded-lg font-poppins hover:bg-blue-500 transition-all duration-300 text-sm sm:text-base"
+                  >
+                    <span className="material-icons text-lg">download</span>
+                    {currentContent.downloadCV}
+                  </button>
+                  <button
+                    onClick={handleContact}
+                    className="flex items-center justify-center gap-2 border-2 border-primary-gray text-primary-gray px-6 py-3 rounded-lg font-poppins hover:border-primary-white hover:text-primary-white transition-all duration-300 text-sm sm:text-base"
+                  >
+                    <span className="material-icons text-lg">email</span>
+                    {currentContent.contact}
+                  </button>
+                </div>
+              </div>
+
+              {/* DERECHA: Ilustración */}
+              <div className="hidden lg:flex justify-center items-center">
+                <img
+                  src="/hero-illustration.svg"
+                  alt="Illustration"
+                  className="max-w-md w-full h-auto opacity-90"
+                />
               </div>
             </div>
           </div>
