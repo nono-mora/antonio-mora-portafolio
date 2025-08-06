@@ -5,85 +5,90 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import LanguageSwitcher from "./LanguageSwitcher";
 
-// Registrar el hook para evitar discrepancias de versión de React
 gsap.registerPlugin(useGSAP);
 
 const HeroSection = () => {
   const containerRef = useRef();
   const [currentLang, setCurrentLang] = useState("en");
 
-  // Animaciones GSAP usando el hook oficial
   useGSAP(
     () => {
-      const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      const tl = gsap.timeline();
 
-      // Configuración inicial: todos los elementos empiezan ocultos
       gsap.set(
         [
-          ".hero-title",
-          ".hero-subtitle",
-          ".hero-description",
-          ".hero-cta",
-          ".hero-scroll",
+          ".status-badge",
+          ".hero-name",
+          ".hero-role",
+          ".hero-buttons",
+          ".hero-info",
+          ".info-card",
         ],
         {
           opacity: 0,
-          y: 50,
+          y: 30,
         }
       );
 
-      // Secuencia de animaciones
-      tl.to(".hero-title", {
+      tl.to(".status-badge", {
         opacity: 1,
         y: 0,
-        duration: 0.8,
-        delay: 0.2,
+        duration: 0.6,
+        delay: 0.3,
       })
         .to(
-          ".hero-subtitle",
+          ".hero-name",
           {
             opacity: 1,
             y: 0,
             duration: 0.8,
+          },
+          "-=0.3"
+        )
+        .to(
+          ".hero-role",
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.6,
           },
           "-=0.4"
         )
         .to(
-          ".hero-description",
+          ".hero-buttons",
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.6,
           },
-          "-=0.4"
+          "-=0.3"
         )
         .to(
-          ".hero-cta",
+          ".hero-info",
           {
             opacity: 1,
             y: 0,
-            duration: 0.8,
+            duration: 0.6,
           },
-          "-=0.4"
+          "-=0.3"
         )
         .to(
-          ".hero-scroll",
+          ".info-card",
           {
             opacity: 1,
             y: 0,
             duration: 0.8,
           },
-          "-=0.4"
+          "-=0.5"
         );
     },
     { scope: containerRef }
-  ); // scope es opcional pero recomendado para performance
+  );
 
   useEffect(() => {
     const savedLang = localStorage.getItem("language") || "en";
     setCurrentLang(savedLang);
 
-    // Escuchar cambios en localStorage para actualizar el idioma
     const handleStorageChange = (e) => {
       if (e.key === "language") {
         setCurrentLang(e.newValue || "en");
@@ -96,24 +101,28 @@ const HeroSection = () => {
 
   const content = {
     en: {
-      greeting: "Hi, I'm",
       name: "Antonio Mora",
-      title: "Full Stack Developer",
+      role: "Full Stack Developer",
       description:
-        "I build scalable web applications and robust backend systems. Passionate about clean code, modern technologies, and creating solutions that make a difference.",
-      cta: "View My Work",
-      contact: "Get In Touch",
-      scroll: "Scroll to explore",
+        "Experienced developer building scalable web applications and robust backend systems. Seeking opportunities to contribute to innovative teams with modern technologies.",
+      experience: "3+ Years Experience",
+      location: "Remote / On-site",
+      status: "Open to Work",
+      viewWork: "View Portfolio",
+      contact: "Contact Me",
+      scroll: "Explore More",
     },
     es: {
-      greeting: "Hola, soy",
       name: "Antonio Mora",
-      title: "Desarrollador Full Stack",
+      role: "Desarrollador Full Stack",
       description:
-        "Construyo aplicaciones web escalables y sistemas backend robustos. Apasionado por el código limpio, tecnologías modernas y crear soluciones que marquen la diferencia.",
-      cta: "Ver Mi Trabajo",
-      contact: "Contactar",
-      scroll: "Desplázate para explorar",
+        "Desarrollador experimentado construyendo aplicaciones web escalables y sistemas backend robustos. Buscando oportunidades para contribuir a equipos innovadores con tecnologías modernas.",
+      experience: "3+ Años de Experiencia",
+      location: "Remoto / Presencial",
+      status: "Disponible para Trabajar",
+      viewWork: "Ver Portafolio",
+      contact: "Contactarme",
+      scroll: "Explorar Más",
     },
   };
 
@@ -127,82 +136,248 @@ const HeroSection = () => {
   };
 
   return (
-    <section
-      ref={containerRef}
-      className="relative min-h-screen flex items-center justify-center px-6 lg:px-8 bg-gradient-to-br from-primary-dark via-primary-dark to-gray-900 overflow-hidden"
-    >
-      {/* Background Elements */}
-      <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-primary-blue opacity-5 rounded-full filter blur-3xl"></div>
-      </div>
+    <>
+      <link
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet"
+      />
 
-      {/* Language Switcher */}
-      <div className="absolute top-6 right-6 z-10">
-        <LanguageSwitcher />
-      </div>
+      <section
+        ref={containerRef}
+        className="relative min-h-screen bg-primary-dark flex items-center"
+      >
+        {/* Language Switcher */}
+        <div className="absolute top-6 right-6 z-20">
+          <LanguageSwitcher />
+        </div>
 
-      {/* Main Content */}
-      <div className="max-w-6xl mx-auto text-center relative z-10">
-        <div className="space-y-8">
-          {/* Greeting */}
-          <div className="hero-title">
-            <p className="text-lg md:text-xl text-primary-gray font-roboto font-light tracking-wide">
-              {currentContent.greeting}
-            </p>
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Mobile Layout */}
+          <div className="lg:hidden space-y-8">
+            {/* Status Badge */}
+            <div className="status-badge text-center">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-blue/10 border border-primary-blue/30 rounded-full">
+                <span className="material-icons text-primary-blue text-sm">
+                  work
+                </span>
+                <span className="text-primary-blue font-roboto text-sm font-medium">
+                  {currentContent.status}
+                </span>
+              </div>
+            </div>
+
+            {/* Name - Mobile */}
+            <div className="hero-name text-center space-y-1">
+              <h1 className="text-6xl sm:text-7xl font-poppins font-bold text-primary-white leading-none">
+                Antonio
+              </h1>
+              <h1 className="text-6xl sm:text-7xl font-poppins font-bold text-primary-blue leading-none">
+                Mora
+              </h1>
+            </div>
+
+            {/* Role - Mobile */}
+            <div className="hero-role text-center">
+              <h2 className="text-2xl sm:text-3xl font-poppins font-medium text-primary-gray">
+                {currentContent.role}
+              </h2>
+            </div>
+
+            {/* Description - Mobile Compact */}
+            <div className="px-4">
+              <p className="text-primary-gray font-roboto leading-relaxed text-center">
+                {currentContent.description}
+              </p>
+            </div>
+
+            {/* Skills - Mobile */}
+            <div className="flex flex-wrap justify-center gap-2 px-4">
+              <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
+                React
+              </span>
+              <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
+                Node.js
+              </span>
+              <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
+                TypeScript
+              </span>
+              <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
+                MongoDB
+              </span>
+            </div>
+
+            {/* Buttons - Mobile */}
+            <div className="hero-buttons flex flex-col gap-3 px-4">
+              <button className="flex items-center justify-center gap-2 bg-primary-blue text-primary-white px-6 py-4 rounded-lg font-poppins font-medium hover:bg-blue-500 transition-all duration-300">
+                <span className="material-icons text-lg">folder_open</span>
+                {currentContent.viewWork}
+              </button>
+              <button className="flex items-center justify-center gap-2 border-2 border-primary-gray text-primary-gray px-6 py-4 rounded-lg font-poppins font-medium hover:border-primary-white hover:text-primary-white transition-all duration-300">
+                <span className="material-icons text-lg">email</span>
+                {currentContent.contact}
+              </button>
+            </div>
+
+            {/* Quick Info - Mobile */}
+            <div className="hero-info flex justify-center gap-8">
+              <div className="flex items-center gap-2 text-primary-gray">
+                <span className="material-icons text-primary-blue text-lg">
+                  schedule
+                </span>
+                <span className="font-roboto text-sm">
+                  {currentContent.experience}
+                </span>
+              </div>
+              <div className="flex items-center gap-2 text-primary-gray">
+                <span className="material-icons text-primary-blue text-lg">
+                  location_on
+                </span>
+                <span className="font-roboto text-sm">
+                  {currentContent.location}
+                </span>
+              </div>
+            </div>
+
+            {/* Scroll Indicator - Mobile */}
+            <div className="text-center pt-4">
+              <button
+                onClick={handleScroll}
+                className="flex items-center justify-center gap-2 text-primary-gray hover:text-primary-blue transition-colors duration-300 mx-auto"
+              >
+                <span className="font-roboto text-sm">
+                  {currentContent.scroll}
+                </span>
+                <span className="material-icons">keyboard_arrow_down</span>
+              </button>
+            </div>
           </div>
 
-          {/* Name */}
-          <div className="hero-subtitle">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-poppins font-bold text-primary-white leading-none tracking-tight">
-              {currentContent.name}
-            </h1>
-          </div>
+          {/* Desktop Layout */}
+          <div className="hidden lg:grid grid-cols-5 gap-16 items-center">
+            {/* Left Content - Desktop */}
+            <div className="col-span-3 space-y-6">
+              {/* Status Badge */}
+              <div className="status-badge">
+                <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary-blue/10 border border-primary-blue/30 rounded-full">
+                  <span className="material-icons text-primary-blue text-sm">
+                    work
+                  </span>
+                  <span className="text-primary-blue font-roboto text-sm font-medium">
+                    {currentContent.status}
+                  </span>
+                </div>
+              </div>
 
-          {/* Title */}
-          <div className="hero-subtitle">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-poppins font-medium text-primary-blue leading-tight">
-              {currentContent.title}
-            </h2>
-          </div>
+              {/* Name */}
+              <div className="hero-name space-y-1">
+                <h1 className="text-6xl xl:text-7xl font-poppins font-bold text-primary-white leading-none">
+                  Antonio
+                </h1>
+                <h1 className="text-6xl xl:text-7xl font-poppins font-bold text-primary-blue leading-none">
+                  Mora
+                </h1>
+              </div>
 
-          {/* Description */}
-          <div className="hero-description max-w-3xl mx-auto">
-            <p className="text-lg md:text-xl text-primary-gray font-roboto leading-relaxed">
-              {currentContent.description}
-            </p>
-          </div>
+              {/* Role */}
+              <div className="hero-role">
+                <h2 className="text-2xl xl:text-3xl font-poppins font-medium text-primary-gray">
+                  {currentContent.role}
+                </h2>
+              </div>
 
-          {/* CTA Buttons */}
-          <div className="hero-cta flex flex-col sm:flex-row gap-4 justify-center items-center pt-8">
-            <button className="group relative px-8 py-4 bg-primary-blue text-primary-white font-poppins font-medium rounded-lg overflow-hidden transition-all duration-300 hover:shadow-lg hover:shadow-primary-blue/40 hover:-translate-y-1 hover:bg-blue-500">
-              <span className="relative z-10">{currentContent.cta}</span>
-            </button>
+              {/* Buttons */}
+              <div className="hero-buttons flex gap-4 pt-4">
+                <button className="flex items-center justify-center gap-2 bg-primary-blue text-primary-white px-6 py-3 rounded-lg font-poppins font-medium hover:bg-blue-500 transition-all duration-300 hover:scale-105">
+                  <span className="material-icons text-lg">folder_open</span>
+                  {currentContent.viewWork}
+                </button>
+                <button className="flex items-center justify-center gap-2 border-2 border-primary-gray text-primary-gray px-6 py-3 rounded-lg font-poppins font-medium hover:border-primary-white hover:text-primary-white transition-all duration-300 hover:scale-105">
+                  <span className="material-icons text-lg">email</span>
+                  {currentContent.contact}
+                </button>
+              </div>
 
-            <button className="group px-8 py-4 border-2 border-primary-white text-primary-white font-poppins font-medium rounded-lg transition-all duration-300 hover:bg-primary-white hover:text-primary-dark hover:-translate-y-1">
-              {currentContent.contact}
-            </button>
+              {/* Quick Info */}
+              <div className="hero-info flex gap-6 pt-4">
+                <div className="flex items-center gap-2 text-primary-gray">
+                  <span className="material-icons text-primary-blue text-lg">
+                    schedule
+                  </span>
+                  <span className="font-roboto text-sm">
+                    {currentContent.experience}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2 text-primary-gray">
+                  <span className="material-icons text-primary-blue text-lg">
+                    location_on
+                  </span>
+                  <span className="font-roboto text-sm">
+                    {currentContent.location}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Content - Info Card Desktop */}
+            <div className="col-span-2">
+              <div className="info-card">
+                <div className="bg-primary-white/[0.03] backdrop-blur-sm border border-primary-white/10 rounded-xl p-6">
+                  {/* Header */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <span className="material-icons text-primary-blue">
+                      person
+                    </span>
+                    <h3 className="text-primary-blue font-poppins font-semibold">
+                      Professional Profile
+                    </h3>
+                  </div>
+
+                  {/* Description */}
+                  <div className="mb-5">
+                    <p className="text-primary-gray font-roboto leading-relaxed text-sm">
+                      {currentContent.description}
+                    </p>
+                  </div>
+
+                  {/* Skills */}
+                  <div className="mb-5">
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
+                        React
+                      </span>
+                      <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
+                        Node.js
+                      </span>
+                      <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
+                        TypeScript
+                      </span>
+                      <span className="px-3 py-1 bg-primary-blue/20 text-primary-blue text-xs font-medium rounded-full">
+                        MongoDB
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Scroll Indicator */}
+                  <div className="text-center pt-3 border-t border-primary-white/10">
+                    <button
+                      onClick={handleScroll}
+                      className="flex items-center justify-center gap-2 text-primary-gray hover:text-primary-blue transition-colors duration-300 mx-auto text-sm"
+                    >
+                      <span className="font-roboto">
+                        {currentContent.scroll}
+                      </span>
+                      <span className="material-icons text-lg">
+                        keyboard_arrow_down
+                      </span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="hero-scroll absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <button
-          onClick={handleScroll}
-          className="flex flex-col items-center gap-2 text-primary-gray hover:text-primary-blue transition-colors duration-300 group"
-          aria-label="Scroll to next section"
-        >
-          <span className="text-sm font-roboto font-light tracking-wide">
-            {currentContent.scroll}
-          </span>
-          <div className="w-6 h-10 border-2 border-current rounded-full flex justify-center">
-            <div className="w-1 h-3 bg-current rounded-full mt-2 animate-bounce"></div>
-          </div>
-        </button>
-      </div>
-
-      {/* Decorative Elements */}
-    </section>
+      </section>
+    </>
   );
 };
 
