@@ -28,6 +28,7 @@ const ProjectsSection = () => {
         api: "APIs",
         fullstack: "Full Stack",
         automation: "Automation",
+        ml: "Machine Learning",
       },
       viewProject: "View Details",
       liveDemo: "Live Demo",
@@ -109,26 +110,26 @@ const ProjectsSection = () => {
         },
         {
           id: 4,
-          title: "E-Commerce Platform",
+          title: "Neural Network Implementation",
           shortDescription:
-            "Modern online shopping platform with inventory management",
+            "Simple neural network built from scratch to predict vehicle maintenance costs",
           fullDescription:
-            "A responsive e-commerce web application built with React and Node.js, featuring product catalog, shopping cart functionality, secure payment processing, and admin dashboard for inventory management.",
-          category: "fullstack",
+            "Educational implementation of a single-layer neural network using pure Python without external libraries. The network predicts vehicle maintenance costs based on age and mileage using gradient descent and manual backpropagation. Demonstrates fundamental understanding of neural network concepts including forward propagation, cost calculation, and weight optimization.",
+          category: "ml",
           image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=E-Commerce",
+            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Neural+Network",
           technologies: [
-            "React.js",
-            "Node.js",
-            "Express.js",
-            "MongoDB",
-            "JWT",
-            "Bootstrap",
+            "Python",
+            "Machine Learning",
+            "Neural Networks",
+            "Gradient Descent",
+            "Backpropagation",
+            "Mathematical Optimization",
           ],
           challenge:
-            "Create a scalable e-commerce solution with secure payment processing and inventory management.",
+            "Demonstrate that simple scripts can have significant business impact while showcasing deep understanding of neural network fundamentals without relying on external libraries.",
           solution:
-            "Implemented React for dynamic UI, Node.js backend with Express, MongoDB for flexible data storage, and JWT for secure authentication.",
+            "Implemented a complete neural network from scratch using pure Python, including manual gradient calculations, backpropagation algorithm, and cost optimization to achieve accurate predictions on vehicle maintenance costs.",
           featured: false,
         },
         {
@@ -183,6 +184,7 @@ const ProjectsSection = () => {
         api: "APIs",
         fullstack: "Full Stack",
         automation: "Automatización",
+        ml: "Machine Learning",
       },
       viewProject: "Ver Detalles",
       liveDemo: "Demo en Vivo",
@@ -264,26 +266,26 @@ const ProjectsSection = () => {
         },
         {
           id: 4,
-          title: "Plataforma E-Commerce",
+          title: "Implementación de Red Neuronal",
           shortDescription:
-            "Plataforma moderna de compras en línea con gestión de inventario",
+            "Red neuronal simple construida desde cero para predecir costos de mantenimiento vehicular",
           fullDescription:
-            "Aplicación web de comercio electrónico responsiva construida con React y Node.js, con catálogo de productos, funcionalidad de carrito de compras, procesamiento seguro de pagos, y panel de administración para gestión de inventario.",
-          category: "fullstack",
+            "Implementación educativa de una red neuronal de una capa usando Python puro sin librerías externas. La red predice costos de mantenimiento de vehículos basado en edad y millaje usando gradient descent y backpropagation manual. Demuestra comprensión fundamental de conceptos de redes neuronales incluyendo propagación hacia adelante, cálculo de costo y optimización de pesos.",
+          category: "ml",
           image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=E-Commerce",
+            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Red+Neuronal",
           technologies: [
-            "React.js",
-            "Node.js",
-            "Express.js",
-            "MongoDB",
-            "JWT",
-            "Bootstrap",
+            "Python",
+            "Machine Learning",
+            "Redes Neuronales",
+            "Gradient Descent",
+            "Backpropagation",
+            "Optimización Matemática",
           ],
           challenge:
-            "Crear una solución de comercio electrónico escalable con procesamiento seguro de pagos y gestión de inventario.",
+            "Demostrar que scripts simples pueden tener impacto significativo en empresas mientras se muestra comprensión profunda de fundamentos de redes neuronales sin depender de librerías externas.",
           solution:
-            "Implementé React para UI dinámica, backend Node.js con Express, MongoDB para almacenamiento flexible de datos, y JWT para autenticación segura.",
+            "Implementé una red neuronal completa desde cero usando Python puro, incluyendo cálculos manuales de gradientes, algoritmo de backpropagation y optimización de costo para lograr predicciones precisas en costos de mantenimiento vehicular.",
           featured: false,
         },
         {
