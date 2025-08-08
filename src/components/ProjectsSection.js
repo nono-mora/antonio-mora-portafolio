@@ -60,7 +60,7 @@ const ProjectsSection = () => {
             "Create a realistic trading platform with secure authentication and real-time portfolio management for multiple users.",
           solution:
             "Implemented MVC architecture with JWT-based security, optimized SQL Server queries for efficient transaction handling, and created interactive charts for data visualization.",
-          featured: true,
+          featured: false,
         },
         {
           id: 2,
@@ -84,7 +84,7 @@ const ProjectsSection = () => {
             "Build a scalable and secure API with proper authentication, data validation, and documentation.",
           solution:
             "Applied layered architecture with Entity Framework Code First, implemented JWT with refresh tokens, and added comprehensive error handling and Swagger documentation.",
-          featured: true,
+          featured: false,
         },
         {
           id: 3,
@@ -106,7 +106,7 @@ const ProjectsSection = () => {
             "Automate complex business processes to reduce manual processing time and improve efficiency.",
           solution:
             "Developed automated bots that generated 20+ weekly hours of operational savings through intelligent process automation.",
-          featured: true,
+          featured: false,
         },
         {
           id: 4,
@@ -130,7 +130,7 @@ const ProjectsSection = () => {
             "Demonstrate that simple scripts can have significant business impact while showcasing deep understanding of neural network fundamentals without relying on external libraries.",
           solution:
             "Implemented a complete neural network from scratch using pure Python, including manual gradient calculations, backpropagation algorithm, and cost optimization to achieve accurate predictions on vehicle maintenance costs.",
-          featured: false,
+          featured: true,
         },
         {
           id: 5,
@@ -240,7 +240,7 @@ const ProjectsSection = () => {
             "Construir una API escalable y segura con autenticación apropiada, validación de datos y documentación.",
           solution:
             "Apliqué arquitectura de capas con Entity Framework Code First, implementé JWT con refresh tokens, y agregué manejo de errores completo y documentación con Swagger.",
-          featured: true,
+          featured: false,
         },
         {
           id: 3,
@@ -262,7 +262,7 @@ const ProjectsSection = () => {
             "Automatizar procesos de negocio complejos para reducir tiempo de procesamiento manual y mejorar eficiencia.",
           solution:
             "Desarrollé bots automatizados que generaron 20+ horas semanales de ahorro operativo a través de automatización inteligente de procesos.",
-          featured: true,
+          featured: false,
         },
         {
           id: 4,
@@ -286,7 +286,7 @@ const ProjectsSection = () => {
             "Demostrar que scripts simples pueden tener impacto significativo en empresas mientras se muestra comprensión profunda de fundamentos de redes neuronales sin depender de librerías externas.",
           solution:
             "Implementé una red neuronal completa desde cero usando Python puro, incluyendo cálculos manuales de gradientes, algoritmo de backpropagation y optimización de costo para lograr predicciones precisas en costos de mantenimiento vehicular.",
-          featured: false,
+          featured: true,
         },
         {
           id: 5,
