@@ -166,8 +166,10 @@ const HeroSection = () => {
 
   const handleDownloadCV = () => {
     const link = document.createElement("a");
-    link.href = "/cv.pdf";
-    link.download = "Antonio_Mora_CV.pdf";
+    // Seleccionar el CV según el idioma actual
+    const cvFileName = currentLang === "es" ? "/cv-es.pdf" : "/cv-en.pdf";
+    link.href = cvFileName;
+    link.download = `Antonio_Mora_CV_${currentLang.toUpperCase()}.pdf`;
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);

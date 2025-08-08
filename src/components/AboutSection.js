@@ -19,11 +19,11 @@ const AboutSection = () => {
       subtitle: "Software Engineer & Full Stack Developer",
       bio: {
         intro:
-          "I'm Antonio Mora Blotta, a Software Engineer specialized in full-stack development with practical experience in RPA automation and web application development.",
+          "I’m Antonio Mora Blotta, a Software Engineer specialized in full-stack development, with hands-on experience in RPA automation and building robust, scalable web solutions.",
         description:
-          "Currently pursuing my Software Engineering degree at Universidad Cenfotec, I bring hands-on experience in C/C++, C#, JavaScript, Python and Agile methodologies. My expertise spans from building RESTful APIs with .NET Core to creating responsive web applications with React and Node.js.",
+          "Currently pursuing a Software Engineering degree at Universidad Cenfotec, I have practical experience with C/C++, C#, JavaScript, and Python. I apply solid software engineering principles and Agile methodologies to deliver high-quality solutions. My background includes designing and developing RESTful APIs using .NET Core, as well as building modern, responsive web interfaces with React, Node.js, and related JavaScript technologies.",
         passion:
-          "I'm passionate about creating efficient solutions, developing scalable systems, and continuously learning new technologies. My goal is to contribute to innovative teams while growing as a professional developer.",
+          "I focus on identifying technical improvement opportunities and optimizing processes through automation. I'm driven by building efficient, scalable, and maintainable systems. I seek to join teams that value innovation, collaboration, and continuous learning, with the goal of growing professionally and contributing meaningful value to every project.",
       },
       skills: {
         title: "Technical Expertise",
@@ -129,11 +129,11 @@ const AboutSection = () => {
       subtitle: "Ingeniero en Software & Desarrollador Full Stack",
       bio: {
         intro:
-          "Soy Antonio Mora Blotta, un Ingeniero en Software especializado en desarrollo full-stack con experiencia práctica en automatización RPA y desarrollo de aplicaciones web.",
+          "Soy Antonio Mora Blotta, Ingeniero en Software especializado en desarrollo full-stack, con experiencia práctica en automatización RPA y construcción de soluciones web robustas y escalables.",
         description:
-          "Actualmente cursando mi carrera de Ingeniería en Software en la Universidad Cenfotec, aporto experiencia práctica en C/C++, C#, JavaScript, Python y metodologías Agile. Mi experiencia abarca desde la construcción de APIs RESTful con .NET Core hasta la creación de aplicaciones web responsivas con React y Node.js.",
+          "Actualmente curso la carrera de Ingeniería en Software en la Universidad Cenfotec. Poseo experiencia en desarrollo con C/C++, C#, JavaScript y Python, aplicando principios de ingeniería de software y metodologías Agile para entregar soluciones de calidad. He trabajado en el diseño y desarrollo de APIs RESTful utilizando .NET Core, así como en la implementación de interfaces web modernas y responsivas con React, Node.js y otras tecnologías del ecosistema JavaScript.",
         passion:
-          "Me apasiona crear soluciones eficientes, desarrollar sistemas escalables y aprender continuamente nuevas tecnologías. Mi objetivo es contribuir a equipos innovadores mientras crezco como desarrollador profesional.",
+          "Me especializo en identificar oportunidades de mejora técnica y en optimizar procesos mediante la automatización. Me motiva construir soluciones eficientes, escalables y mantenibles. Busco integrarme en equipos donde se valoren la innovación, la colaboración y el aprendizaje continuo, con el objetivo de evolucionar profesionalmente y aportar valor real a cada proyecto.",
       },
       skills: {
         title: "Experiencia Técnica",
@@ -373,17 +373,39 @@ const AboutSection = () => {
           {/* Main Content Grid */}
           <div className="grid lg:grid-cols-2 gap-16 mb-20">
             {/* Left Column - Bio */}
-            <div className="bio-content space-y-6">
-              <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100">
-                <p className="text-lg font-roboto text-primary-dark leading-relaxed mb-4">
-                  {currentContent.bio.intro}
-                </p>
-                <p className="text-base font-roboto text-primary-dark/70 leading-relaxed mb-4">
-                  {currentContent.bio.description}
-                </p>
-                <p className="text-base font-roboto text-primary-dark/70 leading-relaxed">
-                  {currentContent.bio.passion}
-                </p>
+            <div className="bio-content grid gap-6">
+              {/* Intro */}
+              <div className="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-primary-blue/80 hover:shadow-md transition">
+                <div className="flex items-start gap-4">
+                  <span className="material-icons text-primary-blue">
+                    person
+                  </span>
+                  <p className="text-base font-roboto text-primary-dark leading-relaxed">
+                    {currentContent.bio.intro}
+                  </p>
+                </div>
+              </div>
+
+              {/* Experience */}
+              <div className="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-primary-blue/60 hover:shadow-md transition">
+                <div className="flex items-start gap-4">
+                  <span className="material-icons text-primary-blue">code</span>
+                  <p className="text-base font-roboto text-primary-dark/80 leading-relaxed">
+                    {currentContent.bio.description}
+                  </p>
+                </div>
+              </div>
+
+              {/* Passion */}
+              <div className="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-primary-blue/40 hover:shadow-md transition">
+                <div className="flex items-start gap-4">
+                  <span className="material-icons text-primary-blue">
+                    insights
+                  </span>
+                  <p className="text-base font-roboto text-primary-dark/70 leading-relaxed">
+                    {currentContent.bio.passion}
+                  </p>
+                </div>
               </div>
             </div>
 

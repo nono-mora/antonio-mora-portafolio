@@ -46,8 +46,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Developed a comprehensive stock trading simulator with MVC architecture, featuring secure JWT authentication, role-based authorization, and interactive dashboard with real-time data visualization using Chart.js and SweetAlert2.",
           category: "fullstack",
-          image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Trading+Simulator",
+          image: "/projects/trading-simulator.png",
           technologies: [
             ".NET MVC",
             "Bootstrap",
@@ -70,8 +69,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Built a comprehensive RESTful API with complete CRUD operations, Entity Framework Code First for database modeling, JWT authentication with refresh tokens, and comprehensive Swagger documentation.",
           category: "api",
-          image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=RESTful+API",
+          image: "/projects/api.png",
           technologies: [
             ".NET Core",
             "Entity Framework",
@@ -94,8 +92,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Developed and implemented RPA automation solutions at Greenlight Consulting, creating automated bots for repetitive business processes. Executed comprehensive QA testing and technical documentation.",
           category: "automation",
-          image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=RPA+Automation",
+          image: "/projects/uipath.png",
           technologies: [
             "RPA Tools",
             "Process Automation",
@@ -116,8 +113,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Educational implementation of a single-layer neural network using pure Python without external libraries. The network predicts vehicle maintenance costs based on age and mileage using gradient descent and manual backpropagation. Demonstrates fundamental understanding of neural network concepts including forward propagation, cost calculation, and weight optimization.",
           category: "ml",
-          image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Neural+Network",
+          image: "/projects/neural-network.png",
           technologies: [
             "Python",
             "Machine Learning",
@@ -140,8 +136,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Built an intuitive task management application for team collaboration, featuring drag-and-drop Kanban boards, real-time updates, user authentication, and comprehensive project analytics.",
           category: "web",
-          image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Task+Manager",
+          image: "/projects/task-manager.png",
           technologies: [
             "React.js",
             "Node.js",
@@ -163,8 +158,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Designed and developed a responsive portfolio website using modern web technologies, featuring smooth animations with GSAP, multi-language support, and contact form integration.",
           category: "web",
-          image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Portfolio",
+          image: "/projects/portfolio.png",
           technologies: ["Next.js", "React", "Tailwind CSS", "GSAP", "Node.js"],
           challenge:
             "Create an engaging, responsive portfolio that effectively showcases skills and projects.",
@@ -496,9 +490,12 @@ const ProjectsSection = () => {
                   <img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100  transition-all duration-700"
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src = "/fallback.jpg"; // imagen por defecto si falla
+                    }}
+                    className="w-full h-full object-cover opacity-100 transition-all duration-700"
                   />
-                  <div className="absolute inset-0 bg-gray-700 group-hover:opacity-80 transition-opacity duration-500" />
 
                   {/* Featured Badge */}
                   {project.featured && (
@@ -510,7 +507,7 @@ const ProjectsSection = () => {
 
                 {/* Project Info */}
                 <div className="p-6">
-                  <h3 className="text-xl font-poppins font-medium text-primary-dark mb-3 group-hover:text-primary-gray transition-colors duration-300">
+                  <h3 className="text-xl font-poppins font-medium text-primary-dark mb-3 group-hover:text-primary-blue transition-colors duration-300">
                     {project.title}
                   </h3>
                   <p className="text-primary-dark font-roboto text-sm leading-relaxed mb-4">
@@ -619,13 +616,13 @@ const ProjectsSection = () => {
 
                 {/* Action Buttons */}
                 <div className="flex flex-wrap gap-4">
-                  <button
+                  {/* <button
                     className="flex items-center gap-2 px-6 py-3 bg-primary-blue text-primary-white font-roboto font-medium rounded-lg hover:bg-blue-500 transition-colors duration-300"
                     disabled
                   >
                     <span className="material-icons text-lg">launch</span>
                     {currentContent.liveDemo}
-                  </button>
+                  </button> */}
                   <button
                     className="flex items-center gap-2 px-6 py-3 border-2 border-primary-dark text-primary-dark font-roboto font-medium rounded-lg hover:bg-primary-dark hover:text-primary-white transition-all duration-300"
                     disabled

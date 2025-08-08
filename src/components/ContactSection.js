@@ -72,6 +72,7 @@ const ContactSection = () => {
       social: {
         whatsapp: "WhatsApp",
         linkedin: "LinkedIn",
+        github: "GitHub",
       },
       validation: {
         fullName: {
