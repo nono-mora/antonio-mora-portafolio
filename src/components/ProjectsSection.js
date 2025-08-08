@@ -46,7 +46,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Developed a comprehensive stock trading simulator with MVC architecture, featuring secure JWT authentication, role-based authorization, and interactive dashboard with real-time data visualization using Chart.js and SweetAlert2.",
           category: "fullstack",
-          image: "/projects/trading-simulator.png",
+          image: "/trading-simulator.png",
           technologies: [
             ".NET MVC",
             "Bootstrap",
@@ -69,7 +69,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Built a comprehensive RESTful API with complete CRUD operations, Entity Framework Code First for database modeling, JWT authentication with refresh tokens, and comprehensive Swagger documentation.",
           category: "api",
-          image: "/projects/api.png",
+          image: "/api.png",
           technologies: [
             ".NET Core",
             "Entity Framework",
@@ -92,7 +92,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Developed and implemented RPA automation solutions at Greenlight Consulting, creating automated bots for repetitive business processes. Executed comprehensive QA testing and technical documentation.",
           category: "automation",
-          image: "/projects/uipath.png",
+          image: "/uipath.png",
           technologies: [
             "RPA Tools",
             "Process Automation",
@@ -113,7 +113,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Educational implementation of a single-layer neural network using pure Python without external libraries. The network predicts vehicle maintenance costs based on age and mileage using gradient descent and manual backpropagation. Demonstrates fundamental understanding of neural network concepts including forward propagation, cost calculation, and weight optimization.",
           category: "ml",
-          image: "/projects/neural-network.png",
+          image: "/neural-network.png",
           technologies: [
             "Python",
             "Machine Learning",
@@ -136,7 +136,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Built an intuitive task management application for team collaboration, featuring drag-and-drop Kanban boards, real-time updates, user authentication, and comprehensive project analytics.",
           category: "web",
-          image: "/projects/task-manager.png",
+          image: "/task-manager.png",
           technologies: [
             "React.js",
             "Node.js",
@@ -158,7 +158,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Designed and developed a responsive portfolio website using modern web technologies, featuring smooth animations with GSAP, multi-language support, and contact form integration.",
           category: "web",
-          image: "/projects/portfolio.png",
+          image: "/portfolio.png",
           technologies: ["Next.js", "React", "Tailwind CSS", "GSAP", "Node.js"],
           challenge:
             "Create an engaging, responsive portfolio that effectively showcases skills and projects.",
@@ -244,8 +244,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Desarrollé e implementé soluciones de automatización RPA en Greenlight Consulting, creando bots automatizados para procesos de negocio repetitivos. Ejecuté pruebas de QA completas y documentación técnica.",
           category: "automation",
-          image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Automatización+RPA",
+          image: "uipath.png",
           technologies: [
             "Herramientas RPA",
             "Automatización de Procesos",
@@ -266,8 +265,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Implementación educativa de una red neuronal de una capa usando Python puro sin librerías externas. La red predice costos de mantenimiento de vehículos basado en edad y millaje usando gradient descent y backpropagation manual. Demuestra comprensión fundamental de conceptos de redes neuronales incluyendo propagación hacia adelante, cálculo de costo y optimización de pesos.",
           category: "ml",
-          image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Red+Neuronal",
+          image: "/neural-network.png",
           technologies: [
             "Python",
             "Machine Learning",
@@ -314,8 +312,7 @@ const ProjectsSection = () => {
           fullDescription:
             "Diseñé y desarrollé un sitio web portfolio responsivo usando tecnologías web modernas, con animaciones suaves usando GSAP, soporte multi-idioma, e integración de formulario de contacto.",
           category: "web",
-          image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Portfolio",
+          image: "/portfolio.png",
           technologies: ["Next.js", "React", "Tailwind CSS", "GSAP", "Node.js"],
           challenge:
             "Crear un portfolio atractivo y responsivo que muestre efectivamente habilidades y proyectos.",
