@@ -19,15 +19,15 @@ const ProjectsSection = () => {
   // Content translations
   const content = {
     en: {
-      title: "Featured Work",
+      title: "Featured Projects",
       subtitle:
-        "A selection of projects that showcase my expertise in full-stack development",
+        "A selection of projects that showcase my expertise in full-stack development and software engineering",
       categories: {
         all: "All Projects",
         web: "Web Apps",
-        mobile: "Mobile",
-        backend: "Backend",
+        api: "APIs",
         fullstack: "Full Stack",
+        automation: "Automation",
       },
       viewProject: "View Details",
       liveDemo: "Live Demo",
@@ -39,132 +39,150 @@ const ProjectsSection = () => {
       projects: [
         {
           id: 1,
-          title: "E-Commerce Platform",
+          title: "Stock Trading Simulator",
           shortDescription:
-            "Modern online shopping experience with real-time inventory",
+            "Full-stack application for stock trading simulation with real-time data visualization",
           fullDescription:
-            "A comprehensive e-commerce solution featuring real-time inventory management, secure payment processing, and an intuitive admin dashboard. Built with performance and scalability in mind.",
+            "Developed a comprehensive stock trading simulator with MVC architecture, featuring secure JWT authentication, role-based authorization, and interactive dashboard with real-time data visualization using Chart.js and SweetAlert2.",
           category: "fullstack",
-          image: "SS-Portfolio.png",
-          technologies: ["React", "Node.js", "MongoDB", "Stripe API", "Redis"],
+          image:
+            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Trading+Simulator",
+          technologies: [
+            ".NET MVC",
+            "Bootstrap",
+            "JWT",
+            "SQL Server",
+            "Chart.js",
+            "SweetAlert2",
+          ],
           challenge:
-            "Create a scalable platform handling thousands of concurrent users with real-time inventory updates.",
+            "Create a realistic trading platform with secure authentication and real-time portfolio management for multiple users.",
           solution:
-            "Implemented microservices architecture with Redis caching and WebSocket connections for live updates.",
+            "Implemented MVC architecture with JWT-based security, optimized SQL Server queries for efficient transaction handling, and created interactive charts for data visualization.",
           featured: true,
         },
         {
           id: 2,
-          title: "Task Management System",
+          title: "RESTful Management API",
           shortDescription:
-            "Collaborative project management tool for agile teams",
+            "Complete RESTful API with CRUD operations and layered architecture",
           fullDescription:
-            "An intuitive task management application designed for agile teams, featuring real-time collaboration, Kanban boards, and comprehensive analytics.",
-          category: "web",
+            "Built a comprehensive RESTful API with complete CRUD operations, Entity Framework Code First for database modeling, JWT authentication with refresh tokens, and comprehensive Swagger documentation.",
+          category: "api",
           image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Task+Management",
+            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=RESTful+API",
           technologies: [
-            "Vue.js",
-            "Express",
-            "PostgreSQL",
-            "Socket.io",
-            "Docker",
+            ".NET Core",
+            "Entity Framework",
+            "JWT",
+            "SQL Server",
+            "Swagger",
+            "Code First",
           ],
           challenge:
-            "Enable real-time collaboration without compromising performance.",
+            "Build a scalable and secure API with proper authentication, data validation, and documentation.",
           solution:
-            "Utilized WebSockets with optimized state management and database indexing.",
+            "Applied layered architecture with Entity Framework Code First, implemented JWT with refresh tokens, and added comprehensive error handling and Swagger documentation.",
           featured: true,
         },
         {
           id: 3,
-          title: "Mobile Banking App",
-          shortDescription: "Secure and intuitive mobile banking solution",
+          title: "RPA Process Automation",
+          shortDescription:
+            "Automated business processes reducing manual work by 20+ hours weekly",
           fullDescription:
-            "A secure mobile banking application with biometric authentication, real-time transaction monitoring, and comprehensive financial management tools.",
-          category: "mobile",
+            "Developed and implemented RPA automation solutions at Greenlight Consulting, creating automated bots for repetitive business processes. Executed comprehensive QA testing and technical documentation.",
+          category: "automation",
           image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Mobile+Banking",
+            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=RPA+Automation",
           technologies: [
-            "React Native",
-            "Node.js",
-            "PostgreSQL",
-            "JWT",
-            "Face ID",
+            "RPA Tools",
+            "Process Automation",
+            "QA Testing",
+            "Technical Documentation",
           ],
           challenge:
-            "Ensure maximum security while maintaining user-friendly experience.",
+            "Automate complex business processes to reduce manual processing time and improve efficiency.",
           solution:
-            "Implemented multi-layer security with biometric authentication and encrypted data transmission.",
-          featured: false,
-        },
-        {
-          id: 4,
-          title: "Analytics Dashboard",
-          shortDescription:
-            "Real-time data visualization and business intelligence",
-          fullDescription:
-            "A powerful analytics dashboard providing real-time insights through interactive visualizations and customizable reports for data-driven decision making.",
-          category: "web",
-          image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Analytics+Dashboard",
-          technologies: ["React", "D3.js", "Python", "FastAPI", "ClickHouse"],
-          challenge:
-            "Process and visualize millions of data points in real-time.",
-          solution:
-            "Implemented efficient data aggregation pipelines with WebGL-powered visualizations.",
+            "Developed automated bots that generated 20+ weekly hours of operational savings through intelligent process automation.",
           featured: true,
         },
         {
-          id: 5,
-          title: "API Gateway Service",
-          shortDescription: "Microservices orchestration and API management",
+          id: 4,
+          title: "E-Commerce Platform",
+          shortDescription:
+            "Modern online shopping platform with inventory management",
           fullDescription:
-            "A robust API gateway handling authentication, rate limiting, and request routing for a microservices architecture serving millions of requests daily.",
-          category: "backend",
+            "A responsive e-commerce web application built with React and Node.js, featuring product catalog, shopping cart functionality, secure payment processing, and admin dashboard for inventory management.",
+          category: "fullstack",
           image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=API+Gateway",
-          technologies: ["Node.js", "Redis", "Docker", "Kubernetes", "GraphQL"],
+            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=E-Commerce",
+          technologies: [
+            "React.js",
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "JWT",
+            "Bootstrap",
+          ],
           challenge:
-            "Handle high traffic while maintaining low latency and high availability.",
+            "Create a scalable e-commerce solution with secure payment processing and inventory management.",
           solution:
-            "Designed auto-scaling infrastructure with intelligent caching and load balancing.",
+            "Implemented React for dynamic UI, Node.js backend with Express, MongoDB for flexible data storage, and JWT for secure authentication.",
+          featured: false,
+        },
+        {
+          id: 5,
+          title: "Task Management System",
+          shortDescription:
+            "Collaborative project management tool with real-time updates",
+          fullDescription:
+            "Built an intuitive task management application for team collaboration, featuring drag-and-drop Kanban boards, real-time updates, user authentication, and comprehensive project analytics.",
+          category: "web",
+          image:
+            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Task+Manager",
+          technologies: [
+            "React.js",
+            "Node.js",
+            "PostgreSQL",
+            "Socket.io",
+            "JWT",
+            "Chart.js",
+          ],
+          challenge:
+            "Enable real-time collaboration for teams with intuitive task management and tracking.",
+          solution:
+            "Used React for interactive UI, Socket.io for real-time updates, and PostgreSQL for reliable data persistence with optimized queries.",
           featured: false,
         },
         {
           id: 6,
-          title: "Social Media Platform",
-          shortDescription: "Next-generation social networking application",
+          title: "Portfolio Website",
+          shortDescription: "Personal portfolio showcasing projects and skills",
           fullDescription:
-            "A modern social media platform with real-time messaging, content sharing, and AI-powered content recommendations.",
-          category: "fullstack",
+            "Designed and developed a responsive portfolio website using modern web technologies, featuring smooth animations with GSAP, multi-language support, and contact form integration.",
+          category: "web",
           image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Social+Platform",
-          technologies: [
-            "Next.js",
-            "GraphQL",
-            "PostgreSQL",
-            "AWS",
-            "TensorFlow.js",
-          ],
+            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Portfolio",
+          technologies: ["Next.js", "React", "Tailwind CSS", "GSAP", "Node.js"],
           challenge:
-            "Build a scalable platform with real-time features and personalized content.",
+            "Create an engaging, responsive portfolio that effectively showcases skills and projects.",
           solution:
-            "Leveraged serverless architecture with ML-powered recommendation engine.",
-          featured: true,
+            "Leveraged Next.js for performance, Tailwind for responsive design, and GSAP for smooth animations and interactions.",
+          featured: false,
         },
       ],
     },
     es: {
-      title: "Trabajo Destacado",
+      title: "Proyectos Destacados",
       subtitle:
-        "Una selección de proyectos que muestran mi experiencia en desarrollo full-stack",
+        "Una selección de proyectos que muestran mi experiencia en desarrollo full-stack e ingeniería de software",
       categories: {
         all: "Todos",
         web: "Aplicaciones Web",
-        mobile: "Móvil",
-        backend: "Backend",
+        api: "APIs",
         fullstack: "Full Stack",
+        automation: "Automatización",
       },
       viewProject: "Ver Detalles",
       liveDemo: "Demo en Vivo",
@@ -176,120 +194,138 @@ const ProjectsSection = () => {
       projects: [
         {
           id: 1,
-          title: "Plataforma E-Commerce",
+          title: "Simulador de Trading",
           shortDescription:
-            "Experiencia de compra online moderna con inventario en tiempo real",
+            "Aplicación full-stack para simulación de trading con visualización de datos en tiempo real",
           fullDescription:
-            "Una solución de comercio electrónico integral con gestión de inventario en tiempo real, procesamiento de pagos seguro y un panel de administración intuitivo.",
+            "Desarrollé un simulador de trading completo con arquitectura MVC, autenticación segura JWT, autorización basada en roles, y dashboard interactivo con visualización de datos en tiempo real usando Chart.js y SweetAlert2.",
           category: "fullstack",
           image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Plataforma+E-Commerce",
-          technologies: ["React", "Node.js", "MongoDB", "Stripe API", "Redis"],
+            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Simulador+Trading",
+          technologies: [
+            ".NET MVC",
+            "Bootstrap",
+            "JWT",
+            "SQL Server",
+            "Chart.js",
+            "SweetAlert2",
+          ],
           challenge:
-            "Crear una plataforma escalable que maneje miles de usuarios concurrentes con actualizaciones de inventario en tiempo real.",
+            "Crear una plataforma de trading realista con autenticación segura y gestión de portafolios en tiempo real para múltiples usuarios.",
           solution:
-            "Implementé arquitectura de microservicios con caché Redis y conexiones WebSocket para actualizaciones en vivo.",
+            "Implementé arquitectura MVC con seguridad basada en JWT, optimicé consultas SQL Server para manejo eficiente de transacciones, y creé gráficos interactivos para visualización de datos.",
           featured: true,
         },
         {
           id: 2,
-          title: "Sistema de Gestión de Tareas",
+          title: "API RESTful de Gestión",
           shortDescription:
-            "Herramienta colaborativa de gestión de proyectos para equipos ágiles",
+            "API RESTful completa con operaciones CRUD y arquitectura de capas",
           fullDescription:
-            "Una aplicación intuitiva de gestión de tareas diseñada para equipos ágiles, con colaboración en tiempo real, tableros Kanban y análisis completos.",
-          category: "web",
+            "Construí una API RESTful integral con operaciones CRUD completas, Entity Framework Code First para modelado de base de datos, autenticación JWT con refresh tokens, y documentación completa con Swagger.",
+          category: "api",
           image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Gestión+de+Tareas",
+            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=API+RESTful",
           technologies: [
-            "Vue.js",
-            "Express",
-            "PostgreSQL",
-            "Socket.io",
-            "Docker",
+            ".NET Core",
+            "Entity Framework",
+            "JWT",
+            "SQL Server",
+            "Swagger",
+            "Code First",
           ],
           challenge:
-            "Permitir colaboración en tiempo real sin comprometer el rendimiento.",
+            "Construir una API escalable y segura con autenticación apropiada, validación de datos y documentación.",
           solution:
-            "Utilicé WebSockets con gestión de estado optimizada e indexación de base de datos.",
+            "Apliqué arquitectura de capas con Entity Framework Code First, implementé JWT con refresh tokens, y agregué manejo de errores completo y documentación con Swagger.",
           featured: true,
         },
         {
           id: 3,
-          title: "App de Banca Móvil",
-          shortDescription: "Solución de banca móvil segura e intuitiva",
+          title: "Automatización de Procesos RPA",
+          shortDescription:
+            "Procesos de negocio automatizados reduciendo trabajo manual en 20+ horas semanales",
           fullDescription:
-            "Una aplicación de banca móvil segura con autenticación biométrica, monitoreo de transacciones en tiempo real y herramientas integrales de gestión financiera.",
-          category: "mobile",
+            "Desarrollé e implementé soluciones de automatización RPA en Greenlight Consulting, creando bots automatizados para procesos de negocio repetitivos. Ejecuté pruebas de QA completas y documentación técnica.",
+          category: "automation",
           image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Banca+Móvil",
+            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Automatización+RPA",
           technologies: [
-            "React Native",
-            "Node.js",
-            "PostgreSQL",
-            "JWT",
-            "Face ID",
+            "Herramientas RPA",
+            "Automatización de Procesos",
+            "Pruebas QA",
+            "Documentación Técnica",
           ],
           challenge:
-            "Garantizar máxima seguridad manteniendo una experiencia amigable.",
+            "Automatizar procesos de negocio complejos para reducir tiempo de procesamiento manual y mejorar eficiencia.",
           solution:
-            "Implementé seguridad multicapa con autenticación biométrica y transmisión de datos encriptada.",
-          featured: false,
-        },
-        {
-          id: 4,
-          title: "Dashboard de Analytics",
-          shortDescription:
-            "Visualización de datos en tiempo real e inteligencia de negocios",
-          fullDescription:
-            "Un potente dashboard de análisis que proporciona insights en tiempo real a través de visualizaciones interactivas y reportes personalizables.",
-          category: "web",
-          image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Dashboard+Analytics",
-          technologies: ["React", "D3.js", "Python", "FastAPI", "ClickHouse"],
-          challenge:
-            "Procesar y visualizar millones de puntos de datos en tiempo real.",
-          solution:
-            "Implementé pipelines eficientes de agregación de datos con visualizaciones potenciadas por WebGL.",
+            "Desarrollé bots automatizados que generaron 20+ horas semanales de ahorro operativo a través de automatización inteligente de procesos.",
           featured: true,
         },
         {
-          id: 5,
-          title: "Servicio API Gateway",
-          shortDescription: "Orquestación de microservicios y gestión de APIs",
+          id: 4,
+          title: "Plataforma E-Commerce",
+          shortDescription:
+            "Plataforma moderna de compras en línea con gestión de inventario",
           fullDescription:
-            "Un robusto API gateway que maneja autenticación, limitación de velocidad y enrutamiento de solicitudes para una arquitectura de microservicios.",
-          category: "backend",
+            "Aplicación web de comercio electrónico responsiva construida con React y Node.js, con catálogo de productos, funcionalidad de carrito de compras, procesamiento seguro de pagos, y panel de administración para gestión de inventario.",
+          category: "fullstack",
           image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=API+Gateway",
-          technologies: ["Node.js", "Redis", "Docker", "Kubernetes", "GraphQL"],
+            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=E-Commerce",
+          technologies: [
+            "React.js",
+            "Node.js",
+            "Express.js",
+            "MongoDB",
+            "JWT",
+            "Bootstrap",
+          ],
           challenge:
-            "Manejar alto tráfico manteniendo baja latencia y alta disponibilidad.",
+            "Crear una solución de comercio electrónico escalable con procesamiento seguro de pagos y gestión de inventario.",
           solution:
-            "Diseñé infraestructura de auto-escalado con caché inteligente y balanceo de carga.",
+            "Implementé React para UI dinámica, backend Node.js con Express, MongoDB para almacenamiento flexible de datos, y JWT para autenticación segura.",
+          featured: false,
+        },
+        {
+          id: 5,
+          title: "Sistema de Gestión de Tareas",
+          shortDescription:
+            "Herramienta colaborativa de gestión de proyectos con actualizaciones en tiempo real",
+          fullDescription:
+            "Construí una aplicación intuitiva de gestión de tareas para colaboración en equipo, con tableros Kanban arrastrables, actualizaciones en tiempo real, autenticación de usuarios, y análisis completos de proyectos.",
+          category: "web",
+          image:
+            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Gestor+Tareas",
+          technologies: [
+            "React.js",
+            "Node.js",
+            "PostgreSQL",
+            "Socket.io",
+            "JWT",
+            "Chart.js",
+          ],
+          challenge:
+            "Permitir colaboración en tiempo real para equipos con gestión y seguimiento intuitivo de tareas.",
+          solution:
+            "Usé React para UI interactiva, Socket.io para actualizaciones en tiempo real, y PostgreSQL para persistencia confiable de datos con consultas optimizadas.",
           featured: false,
         },
         {
           id: 6,
-          title: "Plataforma de Redes Sociales",
-          shortDescription: "Aplicación de redes sociales de nueva generación",
+          title: "Sitio Web Portfolio",
+          shortDescription:
+            "Portfolio personal mostrando proyectos y habilidades",
           fullDescription:
-            "Una plataforma moderna de redes sociales con mensajería en tiempo real, compartición de contenido y recomendaciones potenciadas por IA.",
-          category: "fullstack",
+            "Diseñé y desarrollé un sitio web portfolio responsivo usando tecnologías web modernas, con animaciones suaves usando GSAP, soporte multi-idioma, e integración de formulario de contacto.",
+          category: "web",
           image:
-            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Plataforma+Social",
-          technologies: [
-            "Next.js",
-            "GraphQL",
-            "PostgreSQL",
-            "AWS",
-            "TensorFlow.js",
-          ],
+            "https://via.placeholder.com/800x600/00BFFF/FFFFFF?text=Portfolio",
+          technologies: ["Next.js", "React", "Tailwind CSS", "GSAP", "Node.js"],
           challenge:
-            "Construir una plataforma escalable con características en tiempo real y contenido personalizado.",
+            "Crear un portfolio atractivo y responsivo que muestre efectivamente habilidades y proyectos.",
           solution:
-            "Aproveché arquitectura serverless con motor de recomendaciones potenciado por ML.",
-          featured: true,
+            "Aproveché Next.js para rendimiento, Tailwind para diseño responsivo, y GSAP para animaciones e interacciones suaves.",
+          featured: false,
         },
       ],
     },

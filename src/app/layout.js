@@ -19,17 +19,17 @@ const roboto = Roboto({
 });
 
 export const metadata = {
-  title: "Antonio Mora - Full Stack Developer",
+  title: "Antonio Mora - Software Engineer",
   description:
-    "Experienced developer building scalable web applications and robust backend systems. Seeking opportunities to contribute to innovative teams with modern technologies.",
+    "Software Engineer specialized in full-stack development with practical experience in RPA automation and web applications. Proficient in C/C++, C#, JavaScript, Python and Agile methodologies.",
   keywords:
-    "Full Stack Developer, React, Node.js, JavaScript, TypeScript, Web Development, Software Engineer, Antonio Mora",
-  author: "Antonio Mora",
+    "Software Engineer, Full Stack Developer, .NET, React, Node.js, C#, JavaScript, TypeScript, Web Development, Antonio Mora Blotta",
+  author: "Antonio Mora Blotta",
   robots: "index, follow",
   openGraph: {
-    title: "Antonio Mora - Full Stack Developer",
+    title: "Antonio Mora - Software Engineer",
     description:
-      "Experienced Full Stack Developer specializing in modern web technologies.",
+      "Software Engineer specializing in full-stack development, .NET technologies, and modern web applications.",
     url: "https://antoniomora.dev",
     siteName: "Antonio Mora Portfolio",
     images: [
@@ -37,7 +37,7 @@ export const metadata = {
         url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "Antonio Mora - Full Stack Developer",
+        alt: "Antonio Mora - Software Engineer",
       },
     ],
     locale: "en_US",
@@ -45,17 +45,13 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Antonio Mora - Full Stack Developer",
+    title: "Antonio Mora - Software Engineer",
     description:
-      "Experienced Full Stack Developer specializing in modern web technologies.",
+      "Software Engineer specializing in full-stack development, .NET technologies, and modern web applications.",
     images: ["/og-image.jpg"],
   },
   alternates: {
     canonical: "https://antoniomora.dev",
-    languages: {
-      "en-US": "https://antoniomora.dev/en",
-      "es-ES": "https://antoniomora.dev/es",
-    },
   },
 };
 
@@ -68,6 +64,7 @@ export default function RootLayout({ children }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#1E1E1E" />
       </head>
+
       <body
         className={`${roboto.className} bg-primary-dark text-primary-white antialiased`}
       >

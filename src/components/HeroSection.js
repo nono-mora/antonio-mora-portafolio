@@ -14,11 +14,11 @@ const HeroSection = () => {
   const content = {
     en: {
       name: "Antonio Mora",
-      role: "Full Stack Developer",
+      role: "Software Engineer",
       description:
-        "Experienced developer building scalable web applications and robust backend systems. Seeking opportunities to contribute to innovative teams with modern technologies.",
-      experience: "1+ Years Experience",
-      location: "Remote / On-site",
+        "Software Engineer specialized in full-stack development with practical experience in RPA automation and web applications. Proficient in C/C++, C#, JavaScript, Python and Agile methodologies. Focused on efficient solutions, RESTful APIs and scalable systems with modern technologies like Node.js and React.",
+      experience: "2+ Years Experience",
+      location: "Heredia, Costa Rica",
       status: "Open to Work",
       downloadCV: "Download CV",
       contact: "Contact Me",
@@ -26,11 +26,11 @@ const HeroSection = () => {
     },
     es: {
       name: "Antonio Mora",
-      role: "Desarrollador Full Stack",
+      role: "Ingeniero en Software",
       description:
-        "Desarrollador experimentado construyendo aplicaciones web escalables y sistemas backend robustos. Buscando oportunidades para contribuir a equipos innovadores con tecnologías modernas.",
-      experience: "1+ Años de Experiencia",
-      location: "Remoto / Presencial",
+        "Ingeniero en Software especializado en desarrollo full-stack con experiencia práctica en automatización RPA y desarrollo de aplicaciones web. Competente en C/C++, C#, JavaScript, Python y metodologías Agile. Enfocado en soluciones eficientes, APIs RESTful y desarrollo de sistemas escalables con tecnologías modernas como Node.js y React.",
+      experience: "2+ Años de Experiencia",
+      location: "Heredia, Costa Rica",
       status: "Disponible para Trabajar",
       downloadCV: "Descargar CV",
       contact: "Contactarme",

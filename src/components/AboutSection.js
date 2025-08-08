@@ -19,76 +19,97 @@ const AboutSection = () => {
       subtitle: "Software Engineer & Full Stack Developer",
       bio: {
         intro:
-          "I'm Antonio Mora, a passionate Software Engineer specializing in embedded systems, backend development, and firmware optimization.",
+          "I'm Antonio Mora Blotta, a Software Engineer specialized in full-stack development with practical experience in RPA automation and web application development.",
         description:
-          "Currently pursuing my Software Engineering degree at Universidad Cenfotec, I bring practical experience in microcontrollers, full-stack development, and RPA automation. My approach combines efficient solutions with hardware debugging and real-time systems development.",
+          "Currently pursuing my Software Engineering degree at Universidad Cenfotec, I bring hands-on experience in C/C++, C#, JavaScript, Python and Agile methodologies. My expertise spans from building RESTful APIs with .NET Core to creating responsive web applications with React and Node.js.",
         passion:
-          "I'm driven by the challenge of creating elegant solutions to complex problems, whether it's optimizing firmware for embedded devices or building scalable web applications.",
+          "I'm passionate about creating efficient solutions, developing scalable systems, and continuously learning new technologies. My goal is to contribute to innovative teams while growing as a professional developer.",
       },
       skills: {
         title: "Technical Expertise",
         categories: {
-          languages: "Languages",
-          embedded: "Embedded Systems",
-          web: "Web Development",
+          languages: "Programming Languages",
+          backend: "Backend & APIs",
+          frontend: "Frontend Development",
+          database: "Databases",
           tools: "Tools & Methods",
         },
         items: {
-          languages: ["C/C++", "Rust", "JavaScript", "Python", "C#", "Java"],
-          embedded: [
-            "Microcontrollers",
-            "Firmware Development",
-            "UART/I2C/SPI",
-            "Real-time Systems",
-            "Hardware Debugging",
+          languages: [
+            "C",
+            "C++",
+            "C#",
+            "JavaScript",
+            "TypeScript",
+            "Python",
+            "Java",
+            "HTML5",
+            "CSS3",
           ],
-          web: [
-            "React.js",
+          backend: [
+            ".NET Core",
+            "Entity Framework",
             "Node.js",
             "Express.js",
+            "RESTful APIs",
+            "JWT",
+            "Swagger",
+          ],
+          frontend: [
+            "React.js",
+            "ASP.NET MVC",
+            "Bootstrap",
+            "Chart.js",
+            "Responsive Design",
+            "SweetAlert2",
+          ],
+          database: [
+            "SQL Server",
             "PostgreSQL",
             "MongoDB",
-            "RESTful APIs",
+            "Entity Framework Code First",
           ],
           tools: [
             "Git",
+            "GitHub",
+            "Visual Studio",
+            "VS Code",
+            "Postman",
             "Agile/Scrum",
             "TDD",
-            "Visual Studio Code",
-            "Performance Optimization",
           ],
         },
       },
       experience: {
         title: "Professional Journey",
-        years: "1+",
+        years: "2+",
         yearsLabel: "Years Experience",
-        projects: "10+",
+        projects: "5+",
         projectsLabel: "Projects Completed",
         languages: "2",
         languagesLabel: "Languages Spoken",
       },
       timeline: [
         {
-          year: "2024",
+          year: "2023",
           title: "Technical Internship",
           company: "Greenlight Consulting",
           description:
-            "Developed RPA automation solutions, reducing manual processing time by 20+ hours weekly",
-        },
-        {
-          year: "2023",
-          title: "Started Software Engineering",
-          company: "Universidad Cenfotec",
-          description:
-            "Began my journey in Software Engineering with focus on embedded systems",
+            "Developed and implemented RPA process automation, reducing manual processing time. Executed QA testing, technical documentation, and automated bot deployment. Collaborated on client projects generating 20+ weekly hours of operational savings",
         },
         {
           year: "2022",
-          title: "Customer Service",
+          title: "Vendor Support Specialist",
           company: "Amazon",
           description:
-            "Resolved complex technical issues while maintaining 95%+ satisfaction rate",
+            "Provided technical support to 30+ daily vendors on Amazon Marketplace platform. Resolved complex catalog, inventory, listing and policy compliance issues. Maintained 95%+ satisfaction index through effective technical communication",
+        },
+        {
+          year: "2022",
+          title: "Banking Agent",
+          company: "Sykes Enterprises",
+          description:
+            "Managed bank accounts, identity verification and processing of 30+ daily transactions. Implemented security procedures and regulatory compliance in financial operations",
         },
       ],
       education: {
@@ -108,76 +129,97 @@ const AboutSection = () => {
       subtitle: "Ingeniero en Software & Desarrollador Full Stack",
       bio: {
         intro:
-          "Soy Antonio Mora, un apasionado Ingeniero en Software especializado en sistemas embebidos, desarrollo backend y optimización de firmware.",
+          "Soy Antonio Mora Blotta, un Ingeniero en Software especializado en desarrollo full-stack con experiencia práctica en automatización RPA y desarrollo de aplicaciones web.",
         description:
-          "Actualmente cursando Ingeniería en Software en la Universidad Cenfotec, aporto experiencia práctica en microcontroladores, desarrollo full-stack y automatización RPA. Mi enfoque combina soluciones eficientes con debugging de hardware y desarrollo de sistemas en tiempo real.",
+          "Actualmente cursando mi carrera de Ingeniería en Software en la Universidad Cenfotec, aporto experiencia práctica en C/C++, C#, JavaScript, Python y metodologías Agile. Mi experiencia abarca desde la construcción de APIs RESTful con .NET Core hasta la creación de aplicaciones web responsivas con React y Node.js.",
         passion:
-          "Me motiva el desafío de crear soluciones elegantes a problemas complejos, ya sea optimizando firmware para dispositivos embebidos o construyendo aplicaciones web escalables.",
+          "Me apasiona crear soluciones eficientes, desarrollar sistemas escalables y aprender continuamente nuevas tecnologías. Mi objetivo es contribuir a equipos innovadores mientras crezco como desarrollador profesional.",
       },
       skills: {
         title: "Experiencia Técnica",
         categories: {
-          languages: "Lenguajes",
-          embedded: "Sistemas Embebidos",
-          web: "Desarrollo Web",
+          languages: "Lenguajes de Programación",
+          backend: "Backend y APIs",
+          frontend: "Desarrollo Frontend",
+          database: "Bases de Datos",
           tools: "Herramientas y Métodos",
         },
         items: {
-          languages: ["C/C++", "Rust", "JavaScript", "Python", "C#", "Java"],
-          embedded: [
-            "Microcontroladores",
-            "Desarrollo de Firmware",
-            "UART/I2C/SPI",
-            "Sistemas en Tiempo Real",
-            "Debugging de Hardware",
+          languages: [
+            "C",
+            "C++",
+            "C#",
+            "JavaScript",
+            "TypeScript",
+            "Python",
+            "Java",
+            "HTML5",
+            "CSS3",
           ],
-          web: [
-            "React.js",
+          backend: [
+            ".NET Core",
+            "Entity Framework",
             "Node.js",
             "Express.js",
+            "APIs RESTful",
+            "JWT",
+            "Swagger",
+          ],
+          frontend: [
+            "React.js",
+            "ASP.NET MVC",
+            "Bootstrap",
+            "Chart.js",
+            "Diseño Responsivo",
+            "SweetAlert2",
+          ],
+          database: [
+            "SQL Server",
             "PostgreSQL",
             "MongoDB",
-            "APIs RESTful",
+            "Entity Framework Code First",
           ],
           tools: [
             "Git",
+            "GitHub",
+            "Visual Studio",
+            "VS Code",
+            "Postman",
             "Agile/Scrum",
             "TDD",
-            "Visual Studio Code",
-            "Optimización de Rendimiento",
           ],
         },
       },
       experience: {
         title: "Trayectoria Profesional",
-        years: "1+",
+        years: "2+",
         yearsLabel: "Años de Experiencia",
-        projects: "10+",
+        projects: "5+",
         projectsLabel: "Proyectos Completados",
         languages: "2",
         languagesLabel: "Idiomas",
       },
       timeline: [
         {
-          year: "2024",
+          year: "2023",
           title: "Pasantía Técnica",
           company: "Greenlight Consulting",
           description:
-            "Desarrollé soluciones de automatización RPA, reduciendo tiempo de procesamiento manual en 20+ horas semanales",
-        },
-        {
-          year: "2023",
-          title: "Inicio en Ingeniería en Software",
-          company: "Universidad Cenfotec",
-          description:
-            "Comencé mi camino en Ingeniería en Software con enfoque en sistemas embebidos",
+            "Desarrollé e implementé automatización de procesos mediante RPA, reduciendo tiempo de procesamiento manual. Ejecuté pruebas de QA, documentación técnica y despliegue automatizado de bots. Colaboré en proyectos cliente que generaron 20+ horas semanales de ahorro operativo",
         },
         {
           year: "2022",
-          title: "Servicio al Cliente",
+          title: "Vendor Support Specialist",
           company: "Amazon",
           description:
-            "Resolví problemas técnicos complejos manteniendo 95%+ de satisfacción",
+            "Brindé soporte técnico a 30+ vendedores diarios en la plataforma Amazon Marketplace. Resolví problemas complejos de catálogo, inventario, listados y cumplimiento de políticas. Mantuve 95%+ índice de satisfacción mediante comunicación técnica efectiva",
+        },
+        {
+          year: "2022",
+          title: "Agente de Banca",
+          company: "Sykes Enterprises",
+          description:
+            "Gestioné cuentas bancarias, verificación de identidad y procesamiento de 30+ transacciones diarias. Implementé procedimientos de seguridad y cumplimiento normativo en operaciones financieras",
         },
       ],
       education: {
@@ -343,25 +385,6 @@ const AboutSection = () => {
                   {currentContent.bio.passion}
                 </p>
               </div>
-
-              {/* Languages Card */}
-              {/* <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
-                <div className="flex items-center gap-6">
-                  <div className="flex-1 text-center">
-                    <span className="text-2xl mb-2 block">🇪🇸</span>
-                    <p className="text-sm font-roboto text-primary-dark">
-                      {currentContent.languages.spanish}
-                    </p>
-                  </div>
-                  <div className="w-px h-12 bg-gray-200"></div>
-                  <div className="flex-1 text-center">
-                    <span className="text-2xl mb-2 block">🇺🇸</span>
-                    <p className="text-sm font-roboto text-primary-dark">
-                      {currentContent.languages.english}
-                    </p>
-                  </div>
-                </div>
-              </div> */}
             </div>
 
             {/* Right Column - Stats & Skills */}

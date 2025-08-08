@@ -122,6 +122,7 @@ const ContactSection = () => {
       social: {
         whatsapp: "WhatsApp",
         linkedin: "LinkedIn",
+        github: "GitHub",
       },
       validation: {
         fullName: {
@@ -291,6 +292,10 @@ const ContactSection = () => {
 
   const openLinkedIn = () => {
     window.open("https://www.linkedin.com/in/antonio-blotta/");
+  };
+
+  const openGitHub = () => {
+    window.open("https://github.com/nono-mora");
   };
 
   const getInputClassName = (fieldName) => {
@@ -524,6 +529,12 @@ const ContactSection = () => {
               className="font-roboto text-primary-blue hover:text-primary-dark transition-colors duration-300 text-lg"
             >
               {currentContent.social.linkedin}
+            </button>
+            <button
+              onClick={openGitHub}
+              className="font-roboto text-primary-blue hover:text-primary-dark transition-colors duration-300 text-lg"
+            >
+              {currentContent.social.github}
             </button>
           </div>
         </div>
