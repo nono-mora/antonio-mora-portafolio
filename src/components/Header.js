@@ -12,7 +12,6 @@ const Header = () => {
   const [currentLang, setCurrentLang] = useState("en");
   const headerRef = useRef();
 
-  // Animación inicial del header
   useGSAP(
     () => {
       gsap.fromTo(
@@ -43,6 +42,7 @@ const Header = () => {
       nav: {
         home: "Home",
         about: "About",
+        timeline: "Experience",
         projects: "Projects",
         contact: "Contact",
       },
@@ -51,6 +51,7 @@ const Header = () => {
       nav: {
         home: "Inicio",
         about: "Acerca",
+        timeline: "Experiencia",
         projects: "Proyectos",
         contact: "Contacto",
       },
@@ -115,6 +116,12 @@ const Header = () => {
                 {currentContent.nav.about}
               </button>
               <button
+                onClick={() => handleNavClick("timeline")}
+                className="text-primary-gray hover:text-primary-blue transition-colors duration-300 font-roboto font-medium"
+              >
+                {currentContent.nav.timeline}
+              </button>
+              <button
                 onClick={() => handleNavClick("projects")}
                 className="text-primary-gray hover:text-primary-blue transition-colors duration-300 font-roboto font-medium"
               >
@@ -135,12 +142,9 @@ const Header = () => {
 
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center space-x-4">
-              {/* Mobile Language Switcher */}
               <div className="scale-90">
                 <LanguageSwitcher />
               </div>
-
-              {/* Hamburger Button */}
               <button
                 onClick={toggleMenu}
                 className="text-primary-gray hover:text-primary-white transition-colors duration-300 p-2"
@@ -179,6 +183,15 @@ const Header = () => {
                   person
                 </span>
                 {currentContent.nav.about}
+              </button>
+              <button
+                onClick={() => handleNavClick("timeline")}
+                className="block w-full text-left px-4 py-3 text-primary-gray hover:text-primary-blue hover:bg-primary-white/5 transition-all duration-300 font-roboto font-medium rounded-lg"
+              >
+                <span className="material-icons text-sm mr-3 align-middle">
+                  work
+                </span>
+                {currentContent.nav.timeline}
               </button>
               <button
                 onClick={() => handleNavClick("projects")}
