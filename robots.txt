@@ -1,0 +1,9 @@
+# public/robots.txt
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://antoniomora.dev/sitemap.xml
+
+# Block admin or sensitive areas if any
+# Disallow: /admin/

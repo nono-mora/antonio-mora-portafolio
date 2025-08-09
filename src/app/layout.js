@@ -18,6 +18,34 @@ const roboto = Roboto({
   display: "swap",
 });
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Antonio Mora Blotta",
+  jobTitle: "Software Engineer",
+  url: "https://antoniomora.dev",
+  sameAs: [
+    "https://www.linkedin.com/in/antonio-blotta/",
+    "https://github.com/nono-mora",
+  ],
+  worksFor: {
+    "@type": "Organization",
+    name: "Greenlight Consulting",
+  },
+  alumniOf: {
+    "@type": "EducationalOrganization",
+    name: "Universidad Cenfotec",
+  },
+  knowsAbout: [
+    "Software Engineering",
+    "Full Stack Development",
+    "RPA",
+    "JavaScript",
+    "C#",
+    ".NET",
+  ],
+};
+
 export const metadata = {
   title: "Antonio Mora - Software Engineer",
   description:
@@ -63,6 +91,11 @@ export default function RootLayout({ children }) {
         <link rel="canonical" href="https://antoniomora.dev" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#1E1E1E" />
+
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
       </head>
 
       <body
